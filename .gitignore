@@ -1,0 +1,5 @@
+tmp_pdf_render/
+tmp_pdf_text/
+.pytest_cache/
+tests/__pycache__/
+__pycache__/
