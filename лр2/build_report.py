@@ -135,7 +135,7 @@ def add_title_page(doc):
             set_run_font(run, size=14, bold=(idx == 0))
 
     teacher_table = doc.tables[0]
-    set_cell_text(teacher_table.cell(0, 4), "Ю.А. Скобцов", size=12)
+    set_cell_text(teacher_table.cell(0, 4), "Скобцов Юрий Александрович", size=10)
     set_cell_text(teacher_table.cell(1, 4), "инициалы, фамилия", size=10)
 
     title_table = doc.tables[1]
@@ -146,7 +146,7 @@ def add_title_page(doc):
 
     student_table = doc.tables[2]
     set_cell_text(student_table.cell(0, 1), "4333К", size=12)
-    set_cell_text(student_table.cell(0, 3), "Могилатов С.И.", size=12)
+    set_cell_text(student_table.cell(0, 3), "Могилатов Семен Игоревич", size=10)
     set_cell_text(student_table.cell(1, 3), "подпись, дата", size=10)
     set_cell_text(student_table.cell(1, 5), "инициалы, фамилия", size=10)
 
