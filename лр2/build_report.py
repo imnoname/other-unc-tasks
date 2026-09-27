@@ -44,6 +44,9 @@ def set_cell_text(cell, text, size=12, bold=False, align=WD_ALIGN_PARAGRAPH.CENT
     cell.text = ""
     paragraph = cell.paragraphs[0]
     paragraph.alignment = align
+    paragraph.paragraph_format.left_indent = Pt(0)
+    paragraph.paragraph_format.first_line_indent = Pt(0)
+    paragraph.paragraph_format.right_indent = Pt(0)
     paragraph.paragraph_format.space_after = Pt(0)
     run = paragraph.add_run(text)
     set_run_font(run, size=size, bold=bold)
@@ -130,12 +133,18 @@ def configure_document(doc):
 def add_title_page(doc):
     doc.paragraphs[1].text = "КАФЕДРА № 43"
     doc.paragraphs[7].text = "Санкт-Петербург 2026"
+    for idx in (2, 3):
+        paragraph = doc.paragraphs[idx]
+        paragraph.alignment = WD_ALIGN_PARAGRAPH.LEFT
+        paragraph.paragraph_format.left_indent = Pt(0)
+        paragraph.paragraph_format.first_line_indent = Pt(0)
+        paragraph.paragraph_format.right_indent = Pt(0)
     for idx in (0, 1, 7):
         for run in doc.paragraphs[idx].runs:
             set_run_font(run, size=14, bold=(idx == 0))
 
     teacher_table = doc.tables[0]
-    set_cell_text(teacher_table.cell(0, 4), "Скобцов Юрий Александрович", size=10)
+    set_cell_text(teacher_table.cell(0, 4), "Скобцов Ю.А.", size=12)
     set_cell_text(teacher_table.cell(1, 4), "инициалы, фамилия", size=10)
 
     title_table = doc.tables[1]
@@ -145,8 +154,15 @@ def add_title_page(doc):
     remove_table_rows(title_table, 3)
 
     student_table = doc.tables[2]
+    for paragraph in student_table.cell(0, 0).paragraphs:
+        paragraph.paragraph_format.left_indent = Pt(0)
+        paragraph.paragraph_format.first_line_indent = Pt(0)
+        paragraph.paragraph_format.right_indent = Pt(0)
+        paragraph.paragraph_format.line_spacing = 1.0
+        for run in paragraph.runs:
+            set_run_font(run, size=12)
     set_cell_text(student_table.cell(0, 1), "4333К", size=12)
-    set_cell_text(student_table.cell(0, 3), "Могилатов Семен Игоревич", size=10)
+    set_cell_text(student_table.cell(0, 5), "Могилатов С.И.", size=12)
     set_cell_text(student_table.cell(1, 3), "подпись, дата", size=10)
     set_cell_text(student_table.cell(1, 5), "инициалы, фамилия", size=10)
 
