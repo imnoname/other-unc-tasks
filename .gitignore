@@ -3,3 +3,6 @@ tmp_pdf_text/
 .pytest_cache/
 tests/__pycache__/
 __pycache__/
+.pytest_cache/
+лр2/report_render.pdf
+лр2/rendered*/

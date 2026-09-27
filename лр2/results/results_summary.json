@@ -1,0 +1,38 @@
+{
+  "function": "sum(5*i*(x_i - 5*i)^2)",
+  "bounds": [
+    -20.0,
+    20.0
+  ],
+  "analytical_optimum": {
+    "2": [
+      5.0,
+      10.0
+    ],
+    "3": [
+      5.0,
+      10.0,
+      15.0
+    ]
+  },
+  "baseline": {
+    "2": {
+      "custom_ga_best_value_median": 1.2132320848643336e-11,
+      "custom_ga_time_median": 0.2433639500013669,
+      "custom_ga_generations_median": 107.0,
+      "custom_ga_distance_median": 1.2040921668381255e-06,
+      "reference_best_value_median": 1.0154700010386615e-15,
+      "reference_time_median": 0.0080350999996881,
+      "reference_generations_median": 39
+    },
+    "3": {
+      "custom_ga_best_value_median": 1.692060122354967e-11,
+      "custom_ga_time_median": 0.28784444999837433,
+      "custom_ga_generations_median": 124.0,
+      "custom_ga_distance_median": 1.250509706407516e-06,
+      "reference_best_value_median": 9.295315093285349e-14,
+      "reference_time_median": 0.05120539999916218,
+      "reference_generations_median": 298
+    }
+  }
+}
