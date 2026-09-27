@@ -161,7 +161,7 @@ def add_title_page(doc):
         paragraph.paragraph_format.line_spacing = 1.0
         for run in paragraph.runs:
             set_run_font(run, size=12)
-    set_cell_text(student_table.cell(0, 1), "4333К", size=12)
+    set_cell_text(student_table.cell(0, 1), "4332К", size=12)
     set_cell_text(student_table.cell(0, 5), "Могилатов С.И.", size=12)
     set_cell_text(student_table.cell(1, 3), "подпись, дата", size=10)
     set_cell_text(student_table.cell(1, 5), "инициалы, фамилия", size=10)
