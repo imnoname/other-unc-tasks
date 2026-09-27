@@ -9,14 +9,14 @@
 Из корня репозитория:
 
 ```text
-python лр3/run_experiments.py
-python -m pytest -q лр3/tests
+python lr3/run_experiments.py
+python -m pytest -q lr3/tests
 ```
 
 Эксперименты сохраняются в `results/`: JSON-сводка, CSV-таблицы и PNG-графики. Отчет собирается командой:
 
 ```text
-python лр3/build_report.py
+python lr3/build_report.py
 ```
 
 ## Файлы
