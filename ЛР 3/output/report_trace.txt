@@ -1,0 +1,7 @@
+Post-system, variant 20
+Function: f(x,y) = (x+1)*(y+1)
+
+Step   Source string   Applied rule         Rule result
+----------------------------------------------------------------------
+
+Result: 111111111111
