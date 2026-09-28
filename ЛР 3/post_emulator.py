@@ -248,7 +248,8 @@ def run_post_system(system_path, input_string, output_path):
             f.write("Function: f(x,y) = (x+1)*(y+1)\n\n")
 
             # Write header with column names
-            f.write(f"{'Step':<6} {'Source string':<15} {'Applied rule':<20} {'Rule result':<25}\n")
+            header = f"{'Step':<6} {'Source string':<15} {'Applied rule':<20} {'Rule result':<25}"
+            f.write(header.rstrip() + "\n")
             f.write("-" * 70 + "\n")
 
             # Write the expansion steps

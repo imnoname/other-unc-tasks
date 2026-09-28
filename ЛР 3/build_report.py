@@ -12,6 +12,8 @@ from docx.enum.table import WD_CELL_VERTICAL_ALIGNMENT
 from docx.enum.text import WD_ALIGN_PARAGRAPH
 from docx.enum.style import WD_STYLE_TYPE
 from docx.shared import Cm, Pt
+from docx.oxml import OxmlElement
+from docx.oxml.ns import qn
 
 
 ROOT = Path(__file__).resolve().parent
@@ -27,6 +29,12 @@ def set_cell(cell, text: str, *, size: int = 10, bold: bool = False) -> None:
     cell.vertical_alignment = WD_CELL_VERTICAL_ALIGNMENT.CENTER
     paragraph = cell.paragraphs[0]
     paragraph.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    paragraph.paragraph_format.left_indent = Pt(0)
+    paragraph.paragraph_format.right_indent = Pt(0)
+    paragraph.paragraph_format.first_line_indent = Pt(0)
+    paragraph.paragraph_format.space_before = Pt(0)
+    paragraph.paragraph_format.space_after = Pt(0)
+    paragraph.paragraph_format.line_spacing = 1.0
     run = paragraph.add_run(text)
     run.font.name = "Times New Roman"
     run.font.size = Pt(size)
@@ -70,17 +78,32 @@ def add_title_page(doc: Document, sheet: dict) -> None:
             size=11,
         )
         set_cell(doc.tables[1].cell(2, 0), "по курсу: Теория вычислительных процессов", size=10)
-        set_cell(doc.tables[2].cell(0, 0), "Могилатов С. И.", size=10)
-        set_cell(doc.tables[2].cell(1, 3), "4333К", size=10)
+        # The official form places the student name in the rightmost field
+        # above the signature label; the group belongs in the group field.
+        set_cell(doc.tables[2].cell(0, 5), "Могилатов С. И.", size=10)
+        set_cell(doc.tables[2].cell(0, 3), sheet["group"], size=10)
+
+    # Fill the department number in the template header and remove the
+    # template's standalone city/date line, which otherwise creates a blank
+    # second page before the contents.
+    for paragraph in list(doc.paragraphs):
+        if "КАФЕДРА" in paragraph.text:
+            paragraph.text = f"КАФЕДРА № {sheet['department']}"
+            paragraph.alignment = WD_ALIGN_PARAGRAPH.CENTER
+            paragraph.paragraph_format.first_line_indent = Pt(0)
+        elif "Санкт-Петербург" in paragraph.text:
+            paragraph._element.getparent().remove(paragraph._element)
 
     for paragraph in doc.paragraphs:
         paragraph.paragraph_format.space_after = Pt(0)
     doc.add_page_break()
 
 
-def add_heading(doc: Document, text: str, level: int = 1) -> None:
+def add_heading(doc: Document, text: str, level: int = 1, *, centered: bool = False) -> None:
     paragraph = doc.add_paragraph(style=f"Heading {level}")
-    paragraph.alignment = WD_ALIGN_PARAGRAPH.LEFT
+    paragraph.alignment = WD_ALIGN_PARAGRAPH.CENTER if centered else WD_ALIGN_PARAGRAPH.LEFT
+    paragraph.paragraph_format.first_line_indent = Pt(0)
+    paragraph.paragraph_format.page_break_before = level == 1 and not centered
     paragraph.add_run(text)
 
 
@@ -123,19 +146,21 @@ def run_example() -> str:
 
 
 def add_contents(doc: Document) -> None:
-    add_heading(doc, "Содержание", 1)
+    add_heading(doc, "СОДЕРЖАНИЕ", 1, centered=True)
     for item in (
-        "1. Цель работы",
-        "2. Теоретические сведения",
-        "3. Постановка задачи и вариант 20",
-        "4. Разработка алгоритма и программы",
-        "5. Результаты тестирования",
-        "6. Вывод",
-        "7. Контрольные вопросы",
-        "8. Список использованных источников",
+        "1. Цель работы ........................................................ 3",
+        "2. Теоретические сведения ........................................... 4",
+        "3. Постановка задачи и вариант 20 ................................. 5",
+        "4. Разработка алгоритма и программы ............................... 6",
+        "5. Результаты тестирования .......................................... 7",
+        "6. Вывод ................................................................ 8",
+        "7. Контрольные вопросы .............................................. 9",
+        "8. Список использованных источников .............................. 10",
     ):
         paragraph = doc.add_paragraph(item)
         paragraph.paragraph_format.left_indent = Cm(0.75)
+        paragraph.paragraph_format.first_line_indent = Pt(0)
+        paragraph.paragraph_format.line_spacing = 1.0
     doc.add_page_break()
 
 
@@ -270,6 +295,22 @@ def build() -> None:
     section.bottom_margin = Cm(2)
     section.left_margin = Cm(3)
     section.right_margin = Cm(1.5)
+    section.different_first_page_header_footer = True
+    footer = section.footer.paragraphs[0]
+    footer.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    footer.paragraph_format.first_line_indent = Pt(0)
+    footer.text = ""
+    run = footer.add_run()
+    field_begin = OxmlElement("w:fldChar")
+    field_begin.set(qn("w:fldCharType"), "begin")
+    instruction = OxmlElement("w:instrText")
+    instruction.set(qn("xml:space"), "preserve")
+    instruction.text = " PAGE "
+    field_end = OxmlElement("w:fldChar")
+    field_end.set(qn("w:fldCharType"), "end")
+    run._r.append(field_begin)
+    run._r.append(instruction)
+    run._r.append(field_end)
     OUTPUT.parent.mkdir(exist_ok=True)
     doc.save(str(OUTPUT))
 
