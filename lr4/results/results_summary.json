@@ -1,0 +1,1380 @@
+{
+  "variant": 4,
+  "target_formula": "f(x) = x^6 - 2*x^4 + x^2",
+  "domain": "[-1, 1]",
+  "points": 20,
+  "terminal_set": [
+    "x",
+    "-5",
+    "-4",
+    "-3",
+    "-2",
+    "-1",
+    "0",
+    "1",
+    "2",
+    "3",
+    "4",
+    "5"
+  ],
+  "function_set": [
+    "+",
+    "-",
+    "*",
+    "/",
+    "protected pow",
+    "abs",
+    "sin",
+    "cos",
+    "exp",
+    "sqrt",
+    "pow2",
+    "pow4",
+    "pow6"
+  ],
+  "problems": {
+    "baseline": {
+      "label": "baseline",
+      "mse": 0.00011743875445197082,
+      "rmse": 0.010836916279642048,
+      "size": 18,
+      "depth": 6,
+      "formula": "((sin(3) * cos((pow4(x) ^ sqrt(x)))) * cos(((pow6(x) * 3) ^ sqrt(x))))",
+      "elapsed_seconds": 22.86349760000303,
+      "parameters": {
+        "population_size": 500,
+        "generations": 150,
+        "max_depth": 7,
+        "crossover_rate": 0.85,
+        "mutation_rate": 0.12,
+        "seed": 4,
+        "tournament_size": 5,
+        "parsimony": 1e-05
+      }
+    },
+    "population_250": {
+      "label": "population_250",
+      "mse": 0.00036213948901797903,
+      "rmse": 0.01902996292739371,
+      "size": 8,
+      "depth": 7,
+      "formula": "pow6(sin(sin(sin((sin(x) * -3)))))",
+      "elapsed_seconds": 4.220909399999073,
+      "parameters": {
+        "population_size": 250,
+        "generations": 150,
+        "max_depth": 7,
+        "crossover_rate": 0.85,
+        "mutation_rate": 0.12,
+        "seed": 5,
+        "tournament_size": 5,
+        "parsimony": 1e-05
+      }
+    },
+    "population_750": {
+      "label": "population_750",
+      "mse": 2.6053939938121893e-05,
+      "rmse": 0.005104306019247072,
+      "size": 14,
+      "depth": 6,
+      "formula": "(((pow6(cos(x)) * x) * x) / sqrt(cos(cos((x * -5)))))",
+      "elapsed_seconds": 23.361766900001385,
+      "parameters": {
+        "population_size": 750,
+        "generations": 150,
+        "max_depth": 7,
+        "crossover_rate": 0.85,
+        "mutation_rate": 0.12,
+        "seed": 6,
+        "tournament_size": 5,
+        "parsimony": 1e-05
+      }
+    },
+    "crossover_0.60": {
+      "label": "crossover_0.60",
+      "mse": 0.0004233689189147839,
+      "rmse": 0.02057593057226778,
+      "size": 6,
+      "depth": 4,
+      "formula": "pow6((sqrt(x) - pow6(x)))",
+      "elapsed_seconds": 6.851088700001128,
+      "parameters": {
+        "population_size": 500,
+        "generations": 150,
+        "max_depth": 7,
+        "crossover_rate": 0.6,
+        "mutation_rate": 0.12,
+        "seed": 7,
+        "tournament_size": 5,
+        "parsimony": 1e-05
+      }
+    },
+    "crossover_1.00": {
+      "label": "crossover_1.00",
+      "mse": 9.694010107157562e-05,
+      "rmse": 0.009845816424836267,
+      "size": 20,
+      "depth": 7,
+      "formula": "(cos(pow2(x)) / (((5 * 3) * cos(x)) * (exp(pow2(x)) + cos((5 * sin(x))))))",
+      "elapsed_seconds": 28.89050639999914,
+      "parameters": {
+        "population_size": 500,
+        "generations": 150,
+        "max_depth": 7,
+        "crossover_rate": 1.0,
+        "mutation_rate": 0.12,
+        "seed": 8,
+        "tournament_size": 5,
+        "parsimony": 1e-05
+      }
+    },
+    "mutation_0.05": {
+      "label": "mutation_0.05",
+      "mse": 0.0003510537274217824,
+      "rmse": 0.018736427819138375,
+      "size": 15,
+      "depth": 7,
+      "formula": "((pow6((1 - pow6(pow2(x)))) - pow6(pow6(cos(x)))) / sqrt(pow6(-2)))",
+      "elapsed_seconds": 17.139819399999396,
+      "parameters": {
+        "population_size": 500,
+        "generations": 150,
+        "max_depth": 7,
+        "crossover_rate": 0.85,
+        "mutation_rate": 0.05,
+        "seed": 9,
+        "tournament_size": 5,
+        "parsimony": 1e-05
+      }
+    },
+    "mutation_0.25": {
+      "label": "mutation_0.25",
+      "mse": 0.0002900908708670147,
+      "rmse": 0.0170320542174752,
+      "size": 11,
+      "depth": 7,
+      "formula": "pow6(((pow6(x) - sqrt(pow6(pow6(x)))) - sqrt(x)))",
+      "elapsed_seconds": 15.767560699998285,
+      "parameters": {
+        "population_size": 500,
+        "generations": 150,
+        "max_depth": 7,
+        "crossover_rate": 0.85,
+        "mutation_rate": 0.25,
+        "seed": 10,
+        "tournament_size": 5,
+        "parsimony": 1e-05
+      }
+    }
+  },
+  "baseline_history": [
+    {
+      "generation": 0,
+      "mse": 0.0022845526645306692,
+      "score": 0.0023645526645306694,
+      "size": 8,
+      "depth": 5,
+      "formula": "sin((pow4(pow2(2)) / sin(pow6(-4))))"
+    },
+    {
+      "generation": 1,
+      "mse": 0.0022845526645306692,
+      "score": 0.0023645526645306694,
+      "size": 8,
+      "depth": 5,
+      "formula": "sin((pow4(pow2(2)) / sin(pow6(-4))))"
+    },
+    {
+      "generation": 2,
+      "mse": 0.0021820968512993016,
+      "score": 0.0023420968512993016,
+      "size": 16,
+      "depth": 7,
+      "formula": "(abs(pow4(pow2(sqrt(sin(x))))) / pow6((abs(sin(x)) + pow2(cos(cos(x))))))"
+    },
+    {
+      "generation": 3,
+      "mse": 0.0018987614396846631,
+      "score": 0.001948761439684663,
+      "size": 5,
+      "depth": 3,
+      "formula": "(sin(3) * sqrt(x))"
+    },
+    {
+      "generation": 4,
+      "mse": 0.0018987614396846631,
+      "score": 0.001948761439684663,
+      "size": 5,
+      "depth": 3,
+      "formula": "(sin(3) * sqrt(x))"
+    },
+    {
+      "generation": 5,
+      "mse": 0.0018154498020382056,
+      "score": 0.0019154498020382057,
+      "size": 10,
+      "depth": 6,
+      "formula": "(cos(sin((sqrt(x) ^ sqrt(x)))) * exp(-2))"
+    },
+    {
+      "generation": 6,
+      "mse": 0.0015959788450608647,
+      "score": 0.0016859788450608647,
+      "size": 9,
+      "depth": 5,
+      "formula": "(sin(3) * cos((sqrt(x) ^ sqrt(x))))"
+    },
+    {
+      "generation": 7,
+      "mse": 0.0014556926755230626,
+      "score": 0.0015456926755230626,
+      "size": 9,
+      "depth": 6,
+      "formula": "(cos(sin((x ^ sqrt(x)))) * exp(-2))"
+    },
+    {
+      "generation": 8,
+      "mse": 0.0012850113754200982,
+      "score": 0.0013950113754200983,
+      "size": 11,
+      "depth": 7,
+      "formula": "(cos(sin((sqrt(pow4(x)) ^ sqrt(x)))) * exp(-2))"
+    },
+    {
+      "generation": 9,
+      "mse": 0.0009870583182834407,
+      "score": 0.0011170583182834406,
+      "size": 13,
+      "depth": 7,
+      "formula": "(abs(pow4(x)) / pow6((abs(sin(x)) + pow2(cos(cos(x))))))"
+    },
+    {
+      "generation": 10,
+      "mse": 0.0009870583182834407,
+      "score": 0.0011170583182834406,
+      "size": 13,
+      "depth": 7,
+      "formula": "(abs(pow4(x)) / pow6((abs(sin(x)) + pow2(cos(cos(x))))))"
+    },
+    {
+      "generation": 11,
+      "mse": 0.0009870583182834407,
+      "score": 0.0011070583182834408,
+      "size": 12,
+      "depth": 7,
+      "formula": "(pow4(x) / pow6((abs(sin(x)) + pow2(cos(cos(x))))))"
+    },
+    {
+      "generation": 12,
+      "mse": 0.0009870583182834407,
+      "score": 0.0011070583182834408,
+      "size": 12,
+      "depth": 7,
+      "formula": "(pow4(x) / pow6((abs(sin(x)) + pow2(cos(cos(x))))))"
+    },
+    {
+      "generation": 13,
+      "mse": 0.0009870583182834407,
+      "score": 0.0011070583182834408,
+      "size": 12,
+      "depth": 7,
+      "formula": "(pow4(x) / pow6((abs(sin(x)) + pow2(cos(cos(x))))))"
+    },
+    {
+      "generation": 14,
+      "mse": 0.0009164908630672432,
+      "score": 0.0010164908630672432,
+      "size": 10,
+      "depth": 6,
+      "formula": "(cos((sqrt(pow4(x)) ^ sqrt(x))) * exp(-2))"
+    },
+    {
+      "generation": 15,
+      "mse": 0.0009164908630672432,
+      "score": 0.0010164908630672432,
+      "size": 10,
+      "depth": 6,
+      "formula": "(cos((sqrt(pow4(x)) ^ sqrt(x))) * exp(-2))"
+    },
+    {
+      "generation": 16,
+      "mse": 0.0008122567327579018,
+      "score": 0.0009722567327579018,
+      "size": 16,
+      "depth": 7,
+      "formula": "((sin(3) * cos((sin(pow2(x)) ^ sqrt(x)))) * cos((x ^ sqrt(x))))"
+    },
+    {
+      "generation": 17,
+      "mse": 0.0008122567327579018,
+      "score": 0.0009722567327579018,
+      "size": 16,
+      "depth": 7,
+      "formula": "((sin(3) * cos((sin(pow2(x)) ^ sqrt(x)))) * cos((x ^ sqrt(x))))"
+    },
+    {
+      "generation": 18,
+      "mse": 0.000480317266428693,
+      "score": 0.000660317266428693,
+      "size": 18,
+      "depth": 7,
+      "formula": "((sin(3) * cos((sin(pow2(x)) ^ sqrt(x)))) * cos((sin(pow2(x)) ^ sqrt(x))))"
+    },
+    {
+      "generation": 19,
+      "mse": 0.000480317266428693,
+      "score": 0.000660317266428693,
+      "size": 18,
+      "depth": 7,
+      "formula": "((sin(3) * cos((sin(pow2(x)) ^ sqrt(x)))) * cos((sin(pow2(x)) ^ sqrt(x))))"
+    },
+    {
+      "generation": 20,
+      "mse": 0.0004313375722668789,
+      "score": 0.0006013375722668789,
+      "size": 17,
+      "depth": 7,
+      "formula": "((sin(3) * cos((sin(pow4(x)) ^ sqrt(x)))) * cos((pow2(x) ^ sqrt(x))))"
+    },
+    {
+      "generation": 21,
+      "mse": 0.0004313375722668789,
+      "score": 0.0006013375722668789,
+      "size": 17,
+      "depth": 7,
+      "formula": "((sin(3) * cos((sin(pow4(x)) ^ sqrt(x)))) * cos((pow2(x) ^ sqrt(x))))"
+    },
+    {
+      "generation": 22,
+      "mse": 0.0004313375722668789,
+      "score": 0.0006013375722668789,
+      "size": 17,
+      "depth": 7,
+      "formula": "((sin(3) * cos((sin(pow4(x)) ^ sqrt(x)))) * cos((pow2(x) ^ sqrt(x))))"
+    },
+    {
+      "generation": 23,
+      "mse": 0.0004313375722668789,
+      "score": 0.0006013375722668789,
+      "size": 17,
+      "depth": 7,
+      "formula": "((sin(3) * cos((sin(pow4(x)) ^ sqrt(x)))) * cos((pow2(x) ^ sqrt(x))))"
+    },
+    {
+      "generation": 24,
+      "mse": 0.00041523226511528636,
+      "score": 0.0005752322651152863,
+      "size": 16,
+      "depth": 6,
+      "formula": "((sin(3) * cos((pow4(x) ^ sqrt(x)))) * cos((pow2(x) ^ sqrt(x))))"
+    },
+    {
+      "generation": 25,
+      "mse": 0.00041523226511528625,
+      "score": 0.0005752322651152862,
+      "size": 16,
+      "depth": 6,
+      "formula": "((sin(3) * cos((pow2(x) ^ sqrt(x)))) * cos((pow4(x) ^ sqrt(x))))"
+    },
+    {
+      "generation": 26,
+      "mse": 0.00041523226511528625,
+      "score": 0.0005752322651152862,
+      "size": 16,
+      "depth": 6,
+      "formula": "((sin(3) * cos((pow2(x) ^ sqrt(x)))) * cos((pow4(x) ^ sqrt(x))))"
+    },
+    {
+      "generation": 27,
+      "mse": 0.00041523226511528625,
+      "score": 0.0005752322651152862,
+      "size": 16,
+      "depth": 6,
+      "formula": "((sin(3) * cos((pow2(x) ^ sqrt(x)))) * cos((pow4(x) ^ sqrt(x))))"
+    },
+    {
+      "generation": 28,
+      "mse": 0.00041523226511528625,
+      "score": 0.0005752322651152862,
+      "size": 16,
+      "depth": 6,
+      "formula": "((sin(3) * cos((pow2(x) ^ sqrt(x)))) * cos((pow4(x) ^ sqrt(x))))"
+    },
+    {
+      "generation": 29,
+      "mse": 0.00041523226511528625,
+      "score": 0.0005752322651152862,
+      "size": 16,
+      "depth": 6,
+      "formula": "((sin(3) * cos((pow2(x) ^ sqrt(x)))) * cos((pow4(x) ^ sqrt(x))))"
+    },
+    {
+      "generation": 30,
+      "mse": 0.00028017121392669,
+      "score": 0.00054017121392669,
+      "size": 26,
+      "depth": 7,
+      "formula": "(((sin(3) * cos((pow2(x) ^ sqrt(x)))) * cos((sin(pow4(x)) ^ sqrt(x)))) * cos((pow2(pow4(sqrt(x))) ^ sqrt(x))))"
+    },
+    {
+      "generation": 31,
+      "mse": 0.0002711463481523849,
+      "score": 0.0005011463481523849,
+      "size": 23,
+      "depth": 7,
+      "formula": "(((sin(3) * cos((pow4(x) ^ sqrt(x)))) * cos((pow2(x) ^ sqrt(x)))) * cos((pow4(x) ^ sqrt(x))))"
+    },
+    {
+      "generation": 32,
+      "mse": 0.0002711463481523848,
+      "score": 0.0005011463481523848,
+      "size": 23,
+      "depth": 7,
+      "formula": "(((sin(3) * cos((pow2(x) ^ sqrt(x)))) * cos((pow4(x) ^ sqrt(x)))) * cos((pow4(x) ^ sqrt(x))))"
+    },
+    {
+      "generation": 33,
+      "mse": 0.0002711463481523848,
+      "score": 0.0005011463481523848,
+      "size": 23,
+      "depth": 7,
+      "formula": "(((sin(3) * cos((pow2(x) ^ sqrt(x)))) * cos((pow4(x) ^ sqrt(x)))) * cos((pow4(x) ^ sqrt(x))))"
+    },
+    {
+      "generation": 34,
+      "mse": 0.0002711463481523848,
+      "score": 0.0005011463481523848,
+      "size": 23,
+      "depth": 7,
+      "formula": "(((sin(3) * cos((pow2(x) ^ sqrt(x)))) * cos((pow4(x) ^ sqrt(x)))) * cos((pow4(x) ^ sqrt(x))))"
+    },
+    {
+      "generation": 35,
+      "mse": 0.0002985885036781607,
+      "score": 0.0004985885036781607,
+      "size": 20,
+      "depth": 6,
+      "formula": "(((sin(3) * cos(pow2(x))) * cos((pow4(x) ^ sqrt(x)))) * cos((pow4(x) ^ sqrt(x))))"
+    },
+    {
+      "generation": 36,
+      "mse": 0.0002985885036781607,
+      "score": 0.0004985885036781607,
+      "size": 20,
+      "depth": 6,
+      "formula": "(((sin(3) * cos(pow2(x))) * cos((pow4(x) ^ sqrt(x)))) * cos((pow4(x) ^ sqrt(x))))"
+    },
+    {
+      "generation": 37,
+      "mse": 0.0002985885036781607,
+      "score": 0.0004985885036781607,
+      "size": 20,
+      "depth": 6,
+      "formula": "(((sin(3) * cos(pow2(x))) * cos((pow4(x) ^ sqrt(x)))) * cos((pow4(x) ^ sqrt(x))))"
+    },
+    {
+      "generation": 38,
+      "mse": 0.0002985885036781607,
+      "score": 0.0004985885036781607,
+      "size": 20,
+      "depth": 6,
+      "formula": "(((sin(3) * cos(pow2(x))) * cos((pow4(x) ^ sqrt(x)))) * cos((pow4(x) ^ sqrt(x))))"
+    },
+    {
+      "generation": 39,
+      "mse": 0.0002985885036781607,
+      "score": 0.0004985885036781607,
+      "size": 20,
+      "depth": 6,
+      "formula": "(((sin(3) * cos(pow2(x))) * cos((pow4(x) ^ sqrt(x)))) * cos((pow4(x) ^ sqrt(x))))"
+    },
+    {
+      "generation": 40,
+      "mse": 0.0002985885036781607,
+      "score": 0.0004985885036781607,
+      "size": 20,
+      "depth": 6,
+      "formula": "(((sin(3) * cos(pow2(x))) * cos((pow4(x) ^ sqrt(x)))) * cos((pow4(x) ^ sqrt(x))))"
+    },
+    {
+      "generation": 41,
+      "mse": 0.0002985885036781607,
+      "score": 0.0004985885036781607,
+      "size": 20,
+      "depth": 6,
+      "formula": "(((sin(3) * cos(pow2(x))) * cos((pow4(x) ^ sqrt(x)))) * cos((pow4(x) ^ sqrt(x))))"
+    },
+    {
+      "generation": 42,
+      "mse": 0.0002985885036781607,
+      "score": 0.0004985885036781607,
+      "size": 20,
+      "depth": 6,
+      "formula": "(((sin(3) * cos(pow2(x))) * cos((pow4(x) ^ sqrt(x)))) * cos((pow4(x) ^ sqrt(x))))"
+    },
+    {
+      "generation": 43,
+      "mse": 0.0002985885036781607,
+      "score": 0.0004985885036781607,
+      "size": 20,
+      "depth": 6,
+      "formula": "(((sin(3) * cos(pow2(x))) * cos((pow4(x) ^ sqrt(x)))) * cos((pow4(x) ^ sqrt(x))))"
+    },
+    {
+      "generation": 44,
+      "mse": 0.0002985885036781607,
+      "score": 0.0004985885036781607,
+      "size": 20,
+      "depth": 6,
+      "formula": "(((sin(3) * cos(pow2(x))) * cos((pow4(x) ^ sqrt(x)))) * cos((pow4(x) ^ sqrt(x))))"
+    },
+    {
+      "generation": 45,
+      "mse": 0.0002985885036781607,
+      "score": 0.0004985885036781607,
+      "size": 20,
+      "depth": 6,
+      "formula": "(((sin(3) * cos(pow2(x))) * cos((pow4(x) ^ sqrt(x)))) * cos((pow4(x) ^ sqrt(x))))"
+    },
+    {
+      "generation": 46,
+      "mse": 0.0002985885036781607,
+      "score": 0.0004985885036781607,
+      "size": 20,
+      "depth": 6,
+      "formula": "(((sin(3) * cos(pow2(x))) * cos((pow4(x) ^ sqrt(x)))) * cos((pow4(x) ^ sqrt(x))))"
+    },
+    {
+      "generation": 47,
+      "mse": 0.00020091532729414895,
+      "score": 0.00047091532729414895,
+      "size": 27,
+      "depth": 7,
+      "formula": "((((sin(3) * cos(pow4(x))) * cos((pow4(x) ^ sqrt(x)))) * cos((pow4(x) ^ sqrt(x)))) * cos((pow4(x) ^ sqrt(x))))"
+    },
+    {
+      "generation": 48,
+      "mse": 0.00020091532729414895,
+      "score": 0.00047091532729414895,
+      "size": 27,
+      "depth": 7,
+      "formula": "((((sin(3) * cos(pow4(x))) * cos((pow4(x) ^ sqrt(x)))) * cos((pow4(x) ^ sqrt(x)))) * cos((pow4(x) ^ sqrt(x))))"
+    },
+    {
+      "generation": 49,
+      "mse": 0.0002283823137682976,
+      "score": 0.00046838231376829763,
+      "size": 24,
+      "depth": 7,
+      "formula": "((((sin(3) * cos(pow4(x))) * cos((pow4(x) ^ sqrt(x)))) * cos(pow4(x))) * cos((pow4(x) ^ sqrt(x))))"
+    },
+    {
+      "generation": 50,
+      "mse": 0.0002283823137682976,
+      "score": 0.00046838231376829763,
+      "size": 24,
+      "depth": 7,
+      "formula": "((((sin(3) * cos(pow4(x))) * cos((pow4(x) ^ sqrt(x)))) * cos(pow4(x))) * cos((pow4(x) ^ sqrt(x))))"
+    },
+    {
+      "generation": 51,
+      "mse": 0.0002283823137682976,
+      "score": 0.00046838231376829763,
+      "size": 24,
+      "depth": 7,
+      "formula": "((((sin(3) * cos(pow4(x))) * cos((pow4(x) ^ sqrt(x)))) * cos(pow4(x))) * cos((pow4(x) ^ sqrt(x))))"
+    },
+    {
+      "generation": 52,
+      "mse": 0.0002283823137682976,
+      "score": 0.00046838231376829763,
+      "size": 24,
+      "depth": 7,
+      "formula": "((((sin(3) * cos(pow4(x))) * cos((pow4(x) ^ sqrt(x)))) * cos(pow4(x))) * cos((pow4(x) ^ sqrt(x))))"
+    },
+    {
+      "generation": 53,
+      "mse": 0.0002283823137682976,
+      "score": 0.00046838231376829763,
+      "size": 24,
+      "depth": 7,
+      "formula": "((((sin(3) * cos(pow4(x))) * cos((pow4(x) ^ sqrt(x)))) * cos(pow4(x))) * cos((pow4(x) ^ sqrt(x))))"
+    },
+    {
+      "generation": 54,
+      "mse": 0.0002283823137682976,
+      "score": 0.00046838231376829763,
+      "size": 24,
+      "depth": 7,
+      "formula": "((((sin(3) * cos(pow4(x))) * cos((pow4(x) ^ sqrt(x)))) * cos(pow4(x))) * cos((pow4(x) ^ sqrt(x))))"
+    },
+    {
+      "generation": 55,
+      "mse": 0.0002283823137682976,
+      "score": 0.00046838231376829763,
+      "size": 24,
+      "depth": 7,
+      "formula": "((((sin(3) * cos(pow4(x))) * cos((pow4(x) ^ sqrt(x)))) * cos(pow4(x))) * cos((pow4(x) ^ sqrt(x))))"
+    },
+    {
+      "generation": 56,
+      "mse": 0.0002283823137682976,
+      "score": 0.00046838231376829763,
+      "size": 24,
+      "depth": 7,
+      "formula": "((((sin(3) * cos(pow4(x))) * cos((pow4(x) ^ sqrt(x)))) * cos(pow4(x))) * cos((pow4(x) ^ sqrt(x))))"
+    },
+    {
+      "generation": 57,
+      "mse": 0.0002283823137682976,
+      "score": 0.00046838231376829763,
+      "size": 24,
+      "depth": 7,
+      "formula": "((((sin(3) * cos(pow4(x))) * cos((pow4(x) ^ sqrt(x)))) * cos(pow4(x))) * cos((pow4(x) ^ sqrt(x))))"
+    },
+    {
+      "generation": 58,
+      "mse": 0.0002283823137682976,
+      "score": 0.00046838231376829763,
+      "size": 24,
+      "depth": 7,
+      "formula": "((((sin(3) * cos(pow4(x))) * cos((pow4(x) ^ sqrt(x)))) * cos(pow4(x))) * cos((pow4(x) ^ sqrt(x))))"
+    },
+    {
+      "generation": 59,
+      "mse": 0.0002283823137682976,
+      "score": 0.00046838231376829763,
+      "size": 24,
+      "depth": 7,
+      "formula": "((((sin(3) * cos(pow4(x))) * cos((pow4(x) ^ sqrt(x)))) * cos(pow4(x))) * cos((pow4(x) ^ sqrt(x))))"
+    },
+    {
+      "generation": 60,
+      "mse": 0.0002283823137682976,
+      "score": 0.00046838231376829763,
+      "size": 24,
+      "depth": 7,
+      "formula": "((((sin(3) * cos(pow4(x))) * cos((pow4(x) ^ sqrt(x)))) * cos(pow4(x))) * cos((pow4(x) ^ sqrt(x))))"
+    },
+    {
+      "generation": 61,
+      "mse": 0.0002283823137682976,
+      "score": 0.00046838231376829763,
+      "size": 24,
+      "depth": 7,
+      "formula": "((((sin(3) * cos(pow4(x))) * cos((pow4(x) ^ sqrt(x)))) * cos(pow4(x))) * cos((pow4(x) ^ sqrt(x))))"
+    },
+    {
+      "generation": 62,
+      "mse": 0.0002283823137682976,
+      "score": 0.00046838231376829763,
+      "size": 24,
+      "depth": 7,
+      "formula": "((((sin(3) * cos(pow4(x))) * cos((pow4(x) ^ sqrt(x)))) * cos(pow4(x))) * cos((pow4(x) ^ sqrt(x))))"
+    },
+    {
+      "generation": 63,
+      "mse": 0.0002283823137682976,
+      "score": 0.00046838231376829763,
+      "size": 24,
+      "depth": 7,
+      "formula": "((((sin(3) * cos(pow4(x))) * cos((pow4(x) ^ sqrt(x)))) * cos(pow4(x))) * cos((pow4(x) ^ sqrt(x))))"
+    },
+    {
+      "generation": 64,
+      "mse": 0.0002283823137682976,
+      "score": 0.00046838231376829763,
+      "size": 24,
+      "depth": 7,
+      "formula": "((((sin(3) * cos(pow4(x))) * cos((pow4(x) ^ sqrt(x)))) * cos(pow4(x))) * cos((pow4(x) ^ sqrt(x))))"
+    },
+    {
+      "generation": 65,
+      "mse": 0.0002283823137682976,
+      "score": 0.00046838231376829763,
+      "size": 24,
+      "depth": 7,
+      "formula": "((((sin(3) * cos(pow4(x))) * cos((pow4(x) ^ sqrt(x)))) * cos(pow4(x))) * cos((pow4(x) ^ sqrt(x))))"
+    },
+    {
+      "generation": 66,
+      "mse": 0.00020769691937460102,
+      "score": 0.00046769691937460106,
+      "size": 26,
+      "depth": 7,
+      "formula": "((((sin(3) * cos(pow4(x))) * cos((pow4(x) ^ sqrt(x)))) * cos(pow4(x))) * cos((sin((x * 5)) ^ sqrt(x))))"
+    },
+    {
+      "generation": 67,
+      "mse": 0.00020769691937460102,
+      "score": 0.00046769691937460106,
+      "size": 26,
+      "depth": 7,
+      "formula": "((((sin(3) * cos(pow4(x))) * cos((pow4(x) ^ sqrt(x)))) * cos(pow4(x))) * cos((sin((x * 5)) ^ sqrt(x))))"
+    },
+    {
+      "generation": 68,
+      "mse": 0.00020769691937460102,
+      "score": 0.00046769691937460106,
+      "size": 26,
+      "depth": 7,
+      "formula": "((((sin(3) * cos(pow4(x))) * cos((pow4(x) ^ sqrt(x)))) * cos(pow4(x))) * cos((sin((x * 5)) ^ sqrt(x))))"
+    },
+    {
+      "generation": 69,
+      "mse": 0.00020769691937460102,
+      "score": 0.00046769691937460106,
+      "size": 26,
+      "depth": 7,
+      "formula": "((((sin(3) * cos(pow4(x))) * cos((pow4(x) ^ sqrt(x)))) * cos(pow4(x))) * cos((sin((x * 5)) ^ sqrt(x))))"
+    },
+    {
+      "generation": 70,
+      "mse": 0.00020769691937460102,
+      "score": 0.00046769691937460106,
+      "size": 26,
+      "depth": 7,
+      "formula": "((((sin(3) * cos(pow4(x))) * cos((pow4(x) ^ sqrt(x)))) * cos(pow4(x))) * cos((sin((x * 5)) ^ sqrt(x))))"
+    },
+    {
+      "generation": 71,
+      "mse": 0.00021176303763217096,
+      "score": 0.00043176303763217097,
+      "size": 22,
+      "depth": 6,
+      "formula": "(((sin(3) * cos(pow4(x))) * cos((pow4(x) ^ sqrt(x)))) * cos((sin((x * 5)) ^ sqrt(x))))"
+    },
+    {
+      "generation": 72,
+      "mse": 0.00021176303763217096,
+      "score": 0.00043176303763217097,
+      "size": 22,
+      "depth": 6,
+      "formula": "(((sin(3) * cos(pow4(x))) * cos((pow4(x) ^ sqrt(x)))) * cos((sin((x * 5)) ^ sqrt(x))))"
+    },
+    {
+      "generation": 73,
+      "mse": 0.00021176303763217096,
+      "score": 0.00043176303763217097,
+      "size": 22,
+      "depth": 6,
+      "formula": "(((sin(3) * cos(pow4(x))) * cos((pow4(x) ^ sqrt(x)))) * cos((sin((x * 5)) ^ sqrt(x))))"
+    },
+    {
+      "generation": 74,
+      "mse": 0.00021176303763217096,
+      "score": 0.00043176303763217097,
+      "size": 22,
+      "depth": 6,
+      "formula": "(((sin(3) * cos(pow4(x))) * cos((pow4(x) ^ sqrt(x)))) * cos((sin((x * 5)) ^ sqrt(x))))"
+    },
+    {
+      "generation": 75,
+      "mse": 0.00021176303763217096,
+      "score": 0.00043176303763217097,
+      "size": 22,
+      "depth": 6,
+      "formula": "(((sin(3) * cos(pow4(x))) * cos((pow4(x) ^ sqrt(x)))) * cos((sin((x * 5)) ^ sqrt(x))))"
+    },
+    {
+      "generation": 76,
+      "mse": 0.00021176303763217096,
+      "score": 0.00043176303763217097,
+      "size": 22,
+      "depth": 6,
+      "formula": "(((sin(3) * cos(pow4(x))) * cos((pow4(x) ^ sqrt(x)))) * cos((sin((x * 5)) ^ sqrt(x))))"
+    },
+    {
+      "generation": 77,
+      "mse": 0.00021176303763217096,
+      "score": 0.00043176303763217097,
+      "size": 22,
+      "depth": 6,
+      "formula": "(((sin(3) * cos(pow4(x))) * cos((pow4(x) ^ sqrt(x)))) * cos((sin((x * 5)) ^ sqrt(x))))"
+    },
+    {
+      "generation": 78,
+      "mse": 0.00021176303763217096,
+      "score": 0.00043176303763217097,
+      "size": 22,
+      "depth": 6,
+      "formula": "(((sin(3) * cos(pow4(x))) * cos((pow4(x) ^ sqrt(x)))) * cos((sin((x * 5)) ^ sqrt(x))))"
+    },
+    {
+      "generation": 79,
+      "mse": 0.00021176303763217096,
+      "score": 0.00043176303763217097,
+      "size": 22,
+      "depth": 6,
+      "formula": "(((sin(3) * cos(pow4(x))) * cos((pow4(x) ^ sqrt(x)))) * cos((sin((x * 5)) ^ sqrt(x))))"
+    },
+    {
+      "generation": 80,
+      "mse": 0.00021176303763217096,
+      "score": 0.00043176303763217097,
+      "size": 22,
+      "depth": 6,
+      "formula": "(((sin(3) * cos(pow4(x))) * cos((pow4(x) ^ sqrt(x)))) * cos((sin((x * 5)) ^ sqrt(x))))"
+    },
+    {
+      "generation": 81,
+      "mse": 0.00021176303763217096,
+      "score": 0.00043176303763217097,
+      "size": 22,
+      "depth": 6,
+      "formula": "(((sin(3) * cos(pow4(x))) * cos((pow4(x) ^ sqrt(x)))) * cos((sin((x * 5)) ^ sqrt(x))))"
+    },
+    {
+      "generation": 82,
+      "mse": 0.00021176303763217096,
+      "score": 0.00043176303763217097,
+      "size": 22,
+      "depth": 6,
+      "formula": "(((sin(3) * cos(pow4(x))) * cos((pow4(x) ^ sqrt(x)))) * cos((sin((x * 5)) ^ sqrt(x))))"
+    },
+    {
+      "generation": 83,
+      "mse": 0.00021176303763217096,
+      "score": 0.00043176303763217097,
+      "size": 22,
+      "depth": 6,
+      "formula": "(((sin(3) * cos(pow4(x))) * cos((pow4(x) ^ sqrt(x)))) * cos((sin((x * 5)) ^ sqrt(x))))"
+    },
+    {
+      "generation": 84,
+      "mse": 0.00021176303763217096,
+      "score": 0.00043176303763217097,
+      "size": 22,
+      "depth": 6,
+      "formula": "(((sin(3) * cos(pow4(x))) * cos((pow4(x) ^ sqrt(x)))) * cos((sin((x * 5)) ^ sqrt(x))))"
+    },
+    {
+      "generation": 85,
+      "mse": 0.00021176303763217096,
+      "score": 0.00043176303763217097,
+      "size": 22,
+      "depth": 6,
+      "formula": "(((sin(3) * cos(pow4(x))) * cos((pow4(x) ^ sqrt(x)))) * cos((sin((x * 5)) ^ sqrt(x))))"
+    },
+    {
+      "generation": 86,
+      "mse": 0.00021176303763217096,
+      "score": 0.00043176303763217097,
+      "size": 22,
+      "depth": 6,
+      "formula": "(((sin(3) * cos(pow4(x))) * cos((pow4(x) ^ sqrt(x)))) * cos((sin((x * 5)) ^ sqrt(x))))"
+    },
+    {
+      "generation": 87,
+      "mse": 0.00021176303763217096,
+      "score": 0.00043176303763217097,
+      "size": 22,
+      "depth": 6,
+      "formula": "(((sin(3) * cos(pow4(x))) * cos((pow4(x) ^ sqrt(x)))) * cos((sin((x * 5)) ^ sqrt(x))))"
+    },
+    {
+      "generation": 88,
+      "mse": 0.00021176303763217096,
+      "score": 0.00043176303763217097,
+      "size": 22,
+      "depth": 6,
+      "formula": "(((sin(3) * cos(pow4(x))) * cos((pow4(x) ^ sqrt(x)))) * cos((sin((x * 5)) ^ sqrt(x))))"
+    },
+    {
+      "generation": 89,
+      "mse": 0.00021176303763217096,
+      "score": 0.00043176303763217097,
+      "size": 22,
+      "depth": 6,
+      "formula": "(((sin(3) * cos(pow4(x))) * cos((pow4(x) ^ sqrt(x)))) * cos((sin((x * 5)) ^ sqrt(x))))"
+    },
+    {
+      "generation": 90,
+      "mse": 0.00021176303763217096,
+      "score": 0.00043176303763217097,
+      "size": 22,
+      "depth": 6,
+      "formula": "(((sin(3) * cos(pow4(x))) * cos((pow4(x) ^ sqrt(x)))) * cos((sin((x * 5)) ^ sqrt(x))))"
+    },
+    {
+      "generation": 91,
+      "mse": 0.00021176303763217096,
+      "score": 0.00043176303763217097,
+      "size": 22,
+      "depth": 6,
+      "formula": "(((sin(3) * cos(pow4(x))) * cos((pow4(x) ^ sqrt(x)))) * cos((sin((x * 5)) ^ sqrt(x))))"
+    },
+    {
+      "generation": 92,
+      "mse": 0.00021176303763217096,
+      "score": 0.00043176303763217097,
+      "size": 22,
+      "depth": 6,
+      "formula": "(((sin(3) * cos(pow4(x))) * cos((pow4(x) ^ sqrt(x)))) * cos((sin((x * 5)) ^ sqrt(x))))"
+    },
+    {
+      "generation": 93,
+      "mse": 0.00021176303763217096,
+      "score": 0.00043176303763217097,
+      "size": 22,
+      "depth": 6,
+      "formula": "(((sin(3) * cos(pow4(x))) * cos((pow4(x) ^ sqrt(x)))) * cos((sin((x * 5)) ^ sqrt(x))))"
+    },
+    {
+      "generation": 94,
+      "mse": 0.00021176303763217096,
+      "score": 0.00043176303763217097,
+      "size": 22,
+      "depth": 6,
+      "formula": "(((sin(3) * cos(pow4(x))) * cos((pow4(x) ^ sqrt(x)))) * cos((sin((x * 5)) ^ sqrt(x))))"
+    },
+    {
+      "generation": 95,
+      "mse": 0.00020015974742811568,
+      "score": 0.00043015974742811566,
+      "size": 23,
+      "depth": 7,
+      "formula": "(((sin(3) * cos((pow4(x) ^ sqrt(x)))) * cos(pow4(x))) * cos((sin((pow6(x) * 5)) ^ sqrt(x))))"
+    },
+    {
+      "generation": 96,
+      "mse": 0.00020015974742811568,
+      "score": 0.00043015974742811566,
+      "size": 23,
+      "depth": 7,
+      "formula": "(((sin(3) * cos((pow4(x) ^ sqrt(x)))) * cos(pow4(x))) * cos((sin((pow6(x) * 5)) ^ sqrt(x))))"
+    },
+    {
+      "generation": 97,
+      "mse": 0.00020015974742811568,
+      "score": 0.00043015974742811566,
+      "size": 23,
+      "depth": 7,
+      "formula": "(((sin(3) * cos((pow4(x) ^ sqrt(x)))) * cos(pow4(x))) * cos((sin((pow6(x) * 5)) ^ sqrt(x))))"
+    },
+    {
+      "generation": 98,
+      "mse": 0.00020015974742811568,
+      "score": 0.00043015974742811566,
+      "size": 23,
+      "depth": 7,
+      "formula": "(((sin(3) * cos((pow4(x) ^ sqrt(x)))) * cos(pow4(x))) * cos((sin((pow6(x) * 5)) ^ sqrt(x))))"
+    },
+    {
+      "generation": 99,
+      "mse": 0.00020015974742811568,
+      "score": 0.00043015974742811566,
+      "size": 23,
+      "depth": 7,
+      "formula": "(((sin(3) * cos((pow4(x) ^ sqrt(x)))) * cos(pow4(x))) * cos((sin((pow6(x) * 5)) ^ sqrt(x))))"
+    },
+    {
+      "generation": 100,
+      "mse": 0.00020015974742811568,
+      "score": 0.00043015974742811566,
+      "size": 23,
+      "depth": 7,
+      "formula": "(((sin(3) * cos((pow4(x) ^ sqrt(x)))) * cos(pow4(x))) * cos((sin((pow6(x) * 5)) ^ sqrt(x))))"
+    },
+    {
+      "generation": 101,
+      "mse": 0.00020015974742811568,
+      "score": 0.00043015974742811566,
+      "size": 23,
+      "depth": 7,
+      "formula": "(((sin(3) * cos((pow4(x) ^ sqrt(x)))) * cos(pow4(x))) * cos((sin((pow6(x) * 5)) ^ sqrt(x))))"
+    },
+    {
+      "generation": 102,
+      "mse": 0.00014929692160091406,
+      "score": 0.0004092969216009141,
+      "size": 26,
+      "depth": 7,
+      "formula": "(((sin(3) * cos((pow4(x) ^ sqrt(x)))) * cos(pow4(sin((x * 5))))) * cos((sin((pow6(x) * 5)) ^ sqrt(x))))"
+    },
+    {
+      "generation": 103,
+      "mse": 0.0001228763384065201,
+      "score": 0.0003728763384065201,
+      "size": 25,
+      "depth": 7,
+      "formula": "(((sin(3) * cos((pow4(x) ^ sqrt(x)))) * cos(pow4(x))) * cos((sin((pow6(x) * (x * 5))) ^ sqrt(x))))"
+    },
+    {
+      "generation": 104,
+      "mse": 0.00013092581789186144,
+      "score": 0.00036092581789186145,
+      "size": 23,
+      "depth": 7,
+      "formula": "(((sin(3) * cos((pow4(x) ^ sqrt(x)))) * cos(pow4(x))) * cos((sin((pow6(x) * 3)) ^ sqrt(x))))"
+    },
+    {
+      "generation": 105,
+      "mse": 0.00013092581789186144,
+      "score": 0.00036092581789186145,
+      "size": 23,
+      "depth": 7,
+      "formula": "(((sin(3) * cos((pow4(x) ^ sqrt(x)))) * cos(pow4(x))) * cos((sin((pow6(x) * 3)) ^ sqrt(x))))"
+    },
+    {
+      "generation": 106,
+      "mse": 0.00013092581789186144,
+      "score": 0.00036092581789186145,
+      "size": 23,
+      "depth": 7,
+      "formula": "(((sin(3) * cos((pow4(x) ^ sqrt(x)))) * cos(pow4(x))) * cos((sin((pow6(x) * 3)) ^ sqrt(x))))"
+    },
+    {
+      "generation": 107,
+      "mse": 0.00013092581789186144,
+      "score": 0.00036092581789186145,
+      "size": 23,
+      "depth": 7,
+      "formula": "(((sin(3) * cos((pow4(x) ^ sqrt(x)))) * cos(pow4(x))) * cos((sin((pow6(x) * 3)) ^ sqrt(x))))"
+    },
+    {
+      "generation": 108,
+      "mse": 0.00013092581789186144,
+      "score": 0.00036092581789186145,
+      "size": 23,
+      "depth": 7,
+      "formula": "(((sin(3) * cos((pow4(x) ^ sqrt(x)))) * cos(pow4(x))) * cos((sin((pow6(x) * 3)) ^ sqrt(x))))"
+    },
+    {
+      "generation": 109,
+      "mse": 0.00013453662668944842,
+      "score": 0.0003545366266894484,
+      "size": 22,
+      "depth": 7,
+      "formula": "(((sin(3) * cos((pow4(x) ^ sqrt(x)))) * cos(pow4(x))) * cos(((pow6(x) * 3) ^ sqrt(x))))"
+    },
+    {
+      "generation": 110,
+      "mse": 0.00013453662668944842,
+      "score": 0.0003545366266894484,
+      "size": 22,
+      "depth": 7,
+      "formula": "(((sin(3) * cos((pow4(x) ^ sqrt(x)))) * cos(pow4(x))) * cos(((pow6(x) * 3) ^ sqrt(x))))"
+    },
+    {
+      "generation": 111,
+      "mse": 0.00013453662668944842,
+      "score": 0.0003545366266894484,
+      "size": 22,
+      "depth": 7,
+      "formula": "(((sin(3) * cos((pow4(x) ^ sqrt(x)))) * cos(pow4(x))) * cos(((pow6(x) * 3) ^ sqrt(x))))"
+    },
+    {
+      "generation": 112,
+      "mse": 0.00013453662668944842,
+      "score": 0.0003545366266894484,
+      "size": 22,
+      "depth": 7,
+      "formula": "(((sin(3) * cos((pow4(x) ^ sqrt(x)))) * cos(pow4(x))) * cos(((pow6(x) * 3) ^ sqrt(x))))"
+    },
+    {
+      "generation": 113,
+      "mse": 0.00012112419543681017,
+      "score": 0.0003411241954368102,
+      "size": 22,
+      "depth": 7,
+      "formula": "(((sin(3) * cos((pow6(x) ^ sqrt(x)))) * cos(pow4(x))) * cos(((pow6(x) * 3) ^ sqrt(x))))"
+    },
+    {
+      "generation": 114,
+      "mse": 0.00012112419543681017,
+      "score": 0.0003411241954368102,
+      "size": 22,
+      "depth": 7,
+      "formula": "(((sin(3) * cos((pow6(x) ^ sqrt(x)))) * cos(pow4(x))) * cos(((pow6(x) * 3) ^ sqrt(x))))"
+    },
+    {
+      "generation": 115,
+      "mse": 0.00012112419543681017,
+      "score": 0.0003411241954368102,
+      "size": 22,
+      "depth": 7,
+      "formula": "(((sin(3) * cos((pow6(x) ^ sqrt(x)))) * cos(pow4(x))) * cos(((pow6(x) * 3) ^ sqrt(x))))"
+    },
+    {
+      "generation": 116,
+      "mse": 0.00011743875445197082,
+      "score": 0.00029743875445197086,
+      "size": 18,
+      "depth": 6,
+      "formula": "((sin(3) * cos((pow4(x) ^ sqrt(x)))) * cos(((pow6(x) * 3) ^ sqrt(x))))"
+    },
+    {
+      "generation": 117,
+      "mse": 0.00011743875445197082,
+      "score": 0.00029743875445197086,
+      "size": 18,
+      "depth": 6,
+      "formula": "((sin(3) * cos((pow4(x) ^ sqrt(x)))) * cos(((pow6(x) * 3) ^ sqrt(x))))"
+    },
+    {
+      "generation": 118,
+      "mse": 0.00011743875445197082,
+      "score": 0.00029743875445197086,
+      "size": 18,
+      "depth": 6,
+      "formula": "((sin(3) * cos((pow4(x) ^ sqrt(x)))) * cos(((pow6(x) * 3) ^ sqrt(x))))"
+    },
+    {
+      "generation": 119,
+      "mse": 0.00011743875445197082,
+      "score": 0.00029743875445197086,
+      "size": 18,
+      "depth": 6,
+      "formula": "((sin(3) * cos((pow4(x) ^ sqrt(x)))) * cos(((pow6(x) * 3) ^ sqrt(x))))"
+    },
+    {
+      "generation": 120,
+      "mse": 0.00011743875445197082,
+      "score": 0.00029743875445197086,
+      "size": 18,
+      "depth": 6,
+      "formula": "((sin(3) * cos((pow4(x) ^ sqrt(x)))) * cos(((pow6(x) * 3) ^ sqrt(x))))"
+    },
+    {
+      "generation": 121,
+      "mse": 0.00011743875445197082,
+      "score": 0.00029743875445197086,
+      "size": 18,
+      "depth": 6,
+      "formula": "((sin(3) * cos((pow4(x) ^ sqrt(x)))) * cos(((pow6(x) * 3) ^ sqrt(x))))"
+    },
+    {
+      "generation": 122,
+      "mse": 0.00011743875445197082,
+      "score": 0.00029743875445197086,
+      "size": 18,
+      "depth": 6,
+      "formula": "((sin(3) * cos((pow4(x) ^ sqrt(x)))) * cos(((pow6(x) * 3) ^ sqrt(x))))"
+    },
+    {
+      "generation": 123,
+      "mse": 0.00011743875445197082,
+      "score": 0.00029743875445197086,
+      "size": 18,
+      "depth": 6,
+      "formula": "((sin(3) * cos((pow4(x) ^ sqrt(x)))) * cos(((pow6(x) * 3) ^ sqrt(x))))"
+    },
+    {
+      "generation": 124,
+      "mse": 0.00011743875445197082,
+      "score": 0.00029743875445197086,
+      "size": 18,
+      "depth": 6,
+      "formula": "((sin(3) * cos((pow4(x) ^ sqrt(x)))) * cos(((pow6(x) * 3) ^ sqrt(x))))"
+    },
+    {
+      "generation": 125,
+      "mse": 0.00011743875445197082,
+      "score": 0.00029743875445197086,
+      "size": 18,
+      "depth": 6,
+      "formula": "((sin(3) * cos((pow4(x) ^ sqrt(x)))) * cos(((pow6(x) * 3) ^ sqrt(x))))"
+    },
+    {
+      "generation": 126,
+      "mse": 0.00011743875445197082,
+      "score": 0.00029743875445197086,
+      "size": 18,
+      "depth": 6,
+      "formula": "((sin(3) * cos((pow4(x) ^ sqrt(x)))) * cos(((pow6(x) * 3) ^ sqrt(x))))"
+    },
+    {
+      "generation": 127,
+      "mse": 0.00011743875445197082,
+      "score": 0.00029743875445197086,
+      "size": 18,
+      "depth": 6,
+      "formula": "((sin(3) * cos((pow4(x) ^ sqrt(x)))) * cos(((pow6(x) * 3) ^ sqrt(x))))"
+    },
+    {
+      "generation": 128,
+      "mse": 0.00011743875445197082,
+      "score": 0.00029743875445197086,
+      "size": 18,
+      "depth": 6,
+      "formula": "((sin(3) * cos((pow4(x) ^ sqrt(x)))) * cos(((pow6(x) * 3) ^ sqrt(x))))"
+    },
+    {
+      "generation": 129,
+      "mse": 0.00011743875445197082,
+      "score": 0.00029743875445197086,
+      "size": 18,
+      "depth": 6,
+      "formula": "((sin(3) * cos((pow4(x) ^ sqrt(x)))) * cos(((pow6(x) * 3) ^ sqrt(x))))"
+    },
+    {
+      "generation": 130,
+      "mse": 0.00011743875445197082,
+      "score": 0.00029743875445197086,
+      "size": 18,
+      "depth": 6,
+      "formula": "((sin(3) * cos((pow4(x) ^ sqrt(x)))) * cos(((pow6(x) * 3) ^ sqrt(x))))"
+    },
+    {
+      "generation": 131,
+      "mse": 0.00011743875445197082,
+      "score": 0.00029743875445197086,
+      "size": 18,
+      "depth": 6,
+      "formula": "((sin(3) * cos((pow4(x) ^ sqrt(x)))) * cos(((pow6(x) * 3) ^ sqrt(x))))"
+    },
+    {
+      "generation": 132,
+      "mse": 0.00011743875445197082,
+      "score": 0.00029743875445197086,
+      "size": 18,
+      "depth": 6,
+      "formula": "((sin(3) * cos((pow4(x) ^ sqrt(x)))) * cos(((pow6(x) * 3) ^ sqrt(x))))"
+    },
+    {
+      "generation": 133,
+      "mse": 0.00011743875445197082,
+      "score": 0.00029743875445197086,
+      "size": 18,
+      "depth": 6,
+      "formula": "((sin(3) * cos((pow4(x) ^ sqrt(x)))) * cos(((pow6(x) * 3) ^ sqrt(x))))"
+    },
+    {
+      "generation": 134,
+      "mse": 0.00011743875445197082,
+      "score": 0.00029743875445197086,
+      "size": 18,
+      "depth": 6,
+      "formula": "((sin(3) * cos((pow4(x) ^ sqrt(x)))) * cos(((pow6(x) * 3) ^ sqrt(x))))"
+    },
+    {
+      "generation": 135,
+      "mse": 0.00011743875445197082,
+      "score": 0.00029743875445197086,
+      "size": 18,
+      "depth": 6,
+      "formula": "((sin(3) * cos((pow4(x) ^ sqrt(x)))) * cos(((pow6(x) * 3) ^ sqrt(x))))"
+    },
+    {
+      "generation": 136,
+      "mse": 0.00011743875445197082,
+      "score": 0.00029743875445197086,
+      "size": 18,
+      "depth": 6,
+      "formula": "((sin(3) * cos((pow4(x) ^ sqrt(x)))) * cos(((pow6(x) * 3) ^ sqrt(x))))"
+    },
+    {
+      "generation": 137,
+      "mse": 0.00011743875445197082,
+      "score": 0.00029743875445197086,
+      "size": 18,
+      "depth": 6,
+      "formula": "((sin(3) * cos((pow4(x) ^ sqrt(x)))) * cos(((pow6(x) * 3) ^ sqrt(x))))"
+    },
+    {
+      "generation": 138,
+      "mse": 0.00011743875445197082,
+      "score": 0.00029743875445197086,
+      "size": 18,
+      "depth": 6,
+      "formula": "((sin(3) * cos((pow4(x) ^ sqrt(x)))) * cos(((pow6(x) * 3) ^ sqrt(x))))"
+    },
+    {
+      "generation": 139,
+      "mse": 0.00011743875445197082,
+      "score": 0.00029743875445197086,
+      "size": 18,
+      "depth": 6,
+      "formula": "((sin(3) * cos((pow4(x) ^ sqrt(x)))) * cos(((pow6(x) * 3) ^ sqrt(x))))"
+    },
+    {
+      "generation": 140,
+      "mse": 0.00011743875445197082,
+      "score": 0.00029743875445197086,
+      "size": 18,
+      "depth": 6,
+      "formula": "((sin(3) * cos((pow4(x) ^ sqrt(x)))) * cos(((pow6(x) * 3) ^ sqrt(x))))"
+    },
+    {
+      "generation": 141,
+      "mse": 0.00011743875445197082,
+      "score": 0.00029743875445197086,
+      "size": 18,
+      "depth": 6,
+      "formula": "((sin(3) * cos((pow4(x) ^ sqrt(x)))) * cos(((pow6(x) * 3) ^ sqrt(x))))"
+    },
+    {
+      "generation": 142,
+      "mse": 0.00011743875445197082,
+      "score": 0.00029743875445197086,
+      "size": 18,
+      "depth": 6,
+      "formula": "((sin(3) * cos((pow4(x) ^ sqrt(x)))) * cos(((pow6(x) * 3) ^ sqrt(x))))"
+    },
+    {
+      "generation": 143,
+      "mse": 0.00011743875445197082,
+      "score": 0.00029743875445197086,
+      "size": 18,
+      "depth": 6,
+      "formula": "((sin(3) * cos((pow4(x) ^ sqrt(x)))) * cos(((pow6(x) * 3) ^ sqrt(x))))"
+    },
+    {
+      "generation": 144,
+      "mse": 0.00011743875445197082,
+      "score": 0.00029743875445197086,
+      "size": 18,
+      "depth": 6,
+      "formula": "((sin(3) * cos((pow4(x) ^ sqrt(x)))) * cos(((pow6(x) * 3) ^ sqrt(x))))"
+    },
+    {
+      "generation": 145,
+      "mse": 0.00011743875445197082,
+      "score": 0.00029743875445197086,
+      "size": 18,
+      "depth": 6,
+      "formula": "((sin(3) * cos((pow4(x) ^ sqrt(x)))) * cos(((pow6(x) * 3) ^ sqrt(x))))"
+    },
+    {
+      "generation": 146,
+      "mse": 0.00011743875445197082,
+      "score": 0.00029743875445197086,
+      "size": 18,
+      "depth": 6,
+      "formula": "((sin(3) * cos((pow4(x) ^ sqrt(x)))) * cos(((pow6(x) * 3) ^ sqrt(x))))"
+    },
+    {
+      "generation": 147,
+      "mse": 0.00011743875445197082,
+      "score": 0.00029743875445197086,
+      "size": 18,
+      "depth": 6,
+      "formula": "((sin(3) * cos((pow4(x) ^ sqrt(x)))) * cos(((pow6(x) * 3) ^ sqrt(x))))"
+    },
+    {
+      "generation": 148,
+      "mse": 0.00011743875445197082,
+      "score": 0.00029743875445197086,
+      "size": 18,
+      "depth": 6,
+      "formula": "((sin(3) * cos((pow4(x) ^ sqrt(x)))) * cos(((pow6(x) * 3) ^ sqrt(x))))"
+    },
+    {
+      "generation": 149,
+      "mse": 0.00011743875445197082,
+      "score": 0.00029743875445197086,
+      "size": 18,
+      "depth": 6,
+      "formula": "((sin(3) * cos((pow4(x) ^ sqrt(x)))) * cos(((pow6(x) * 3) ^ sqrt(x))))"
+    },
+    {
+      "generation": 150,
+      "mse": 0.00011743875445197082,
+      "score": 0.00029743875445197086,
+      "size": 18,
+      "depth": 6,
+      "formula": "((sin(3) * cos((pow4(x) ^ sqrt(x)))) * cos(((pow6(x) * 3) ^ sqrt(x))))"
+    }
+  ]
+}
