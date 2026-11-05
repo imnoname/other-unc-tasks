@@ -196,7 +196,7 @@
       ],
       "length": 8403.049050059075,
       "closed": false,
-      "elapsed_seconds": 0.989696400007233,
+      "elapsed_seconds": 0.9779063999885693,
       "history": [
         {
           "iteration": 1,
@@ -1434,7 +1434,7 @@
       ],
       "length": 9328.340240431475,
       "closed": true,
-      "elapsed_seconds": 0.9521186000201851,
+      "elapsed_seconds": 0.9672894999966957,
       "history": [
         {
           "iteration": 1,
@@ -2645,7 +2645,7 @@
       "evaporation": 0.25,
       "best_length": 9391.117642201662,
       "generations": 120,
-      "time_seconds": 0.28603199997451156,
+      "time_seconds": 0.2887283000163734,
       "route": [
         1,
         28,
@@ -2683,7 +2683,7 @@
       "evaporation": 0.25,
       "best_length": 9298.128747751201,
       "generations": 120,
-      "time_seconds": 0.566309799964074,
+      "time_seconds": 0.5845679999911226,
       "route": [
         5,
         21,
@@ -2721,7 +2721,7 @@
       "evaporation": 0.45,
       "best_length": 9421.490646564289,
       "generations": 120,
-      "time_seconds": 0.2826716999989003,
+      "time_seconds": 0.3051937999553047,
       "route": [
         20,
         10,
@@ -2759,7 +2759,7 @@
       "evaporation": 0.45,
       "best_length": 9298.128747751201,
       "generations": 120,
-      "time_seconds": 0.5695494000101462,
+      "time_seconds": 0.6082943999790587,
       "route": [
         5,
         21,

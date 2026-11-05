@@ -74,10 +74,22 @@ def draw_route(result, path: Path, title: str):
 
 def draw_convergence(results, path: Path):
     canvas=Image.new("RGB",(1100,600),"white"); draw=ImageDraw.Draw(canvas)
-    box=(80,60,1030,510); draw.rectangle(box,outline="#333333",width=2)
+    box=(125,75,1030,490); draw.rectangle(box,outline="#333333",width=2)
     colors={"path":"#c43c39","cycle":"#2878b5"}
     values=[row["best_length"] for result in results.values() for row in result.history]
     low=min(values); high=max(values)
+    small=ImageFont.truetype(FONT,15)
+    for tick in range(5):
+        fraction=tick/4
+        y=box[1]+(box[3]-box[1])*fraction
+        value=high-(high-low)*fraction
+        draw.line((box[0],y,box[2],y),fill="#dddddd",width=1)
+        draw.text((24,y-9),f"{value:.0f}",fill="#333333",font=small)
+        x=box[0]+(box[2]-box[0])*fraction
+        draw.line((x,box[3],x,box[3]+6),fill="#333333",width=1)
+        max_iterations=max(len(result.history) for result in results.values())
+        iteration=1+round((max_iterations-1)*fraction)
+        draw.text((x-15,box[3]+10),str(iteration),fill="#333333",font=small)
     for label,result in results.items():
         points=[]
         for row in result.history:
@@ -85,8 +97,12 @@ def draw_convergence(results, path: Path):
             y=box[3]-(box[3]-box[1])*(row["best_length"]-low)/max(high-low,1e-9)
             points.append((x,y))
         draw.line(points,fill=colors[label],width=3)
-        draw.text((850,20+25*list(results).index(label)),label,fill=colors[label],font=ImageFont.truetype(FONT,18))
-    draw.text((80,20),"Сходимость муравьиной колонии",fill="#111111",font=ImageFont.truetype(FONT,22)); canvas.save(path)
+        legend={"path":"путь","cycle":"цикл TSP"}[label]
+        draw.text((850,20+25*list(results).index(label)),legend,fill=colors[label],font=ImageFont.truetype(FONT,18))
+    draw.text((125,20),"Сходимость муравьиной колонии",fill="#111111",font=ImageFont.truetype(FONT,22))
+    draw.text((480,545),"Итерация",fill="#333333",font=ImageFont.truetype(FONT,17))
+    draw.text((24,48),"Длина маршрута",fill="#333333",font=small)
+    canvas.save(path)
 
 
 def main(verbose: bool = False):
