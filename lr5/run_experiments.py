@@ -185,7 +185,7 @@ def main(verbose: bool = False) -> None:
     for row in study_rows:
         print(f"  {row['factor']:<22} {str(row['value']):>8} {row['best_value']:>13.4g} {row['generations']:>10} {row['time_seconds']:>10.4f}")
     print("\nФайлы результатов:")
-    for filename in ("results_summary.json", "parameter_study.csv", "population_n2.png", "convergence_n2_n3.png", "parameter_study.png", "step_n2_000.png", "step_n2_050.png"):
+    for filename in ("results_summary.json", "parameter_study.csv", "population_n2.png", "convergence_n2_n3.png", "parameter_study.png", "step_n2_000.png", "step_n2_050.png", "step_n2_100.png"):
         print(f"  {RESULTS / filename}")
 
 

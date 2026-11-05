@@ -206,7 +206,7 @@ def main(verbose: bool = False) -> None:
     for result in list(summaries.values())[1:]:
         print(f"{result['label']:<20} {result['mse']:>12.5g} {result['rmse']:>12.5g} {result['size']:>6} {result['elapsed_seconds']:>10.3f}")
     print("\nФайлы результатов:")
-    for filename in ("results_summary.json", "training_data.csv", "parameter_study.csv", "convergence.png", "function_comparison.png", "tree_progress.png"):
+    for filename in ("results_summary.json", "training_data.csv", "parameter_study.csv", "convergence.png", "function_comparison.png", "tree_progress.png", "tree_generation_*.png"):
         print(f"  {RESULTS / filename}")
 
 
