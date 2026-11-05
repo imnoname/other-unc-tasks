@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import csv
+import argparse
 import json
 import math
 import time
@@ -16,6 +17,25 @@ from gp_symbolic_regression import GeneticProgramming, evaluate, expression, mak
 ROOT = Path(__file__).resolve().parent
 RESULTS = ROOT / "results"
 RESULTS.mkdir(exist_ok=True)
+
+
+def selected_history_rows(history: list[dict]) -> list[dict]:
+    """Return generation 0, each tenth generation, and the final generation."""
+    selected = [row for row in history if row["generation"] % 10 == 0]
+    if history and selected[-1]["generation"] != history[-1]["generation"]:
+        selected.append(history[-1])
+    return selected
+
+
+def format_run_summary(result: dict) -> str:
+    params = result["parameters"]
+    return (
+        f"{result['label']}: {result['formula']}\n"
+        f"  параметры: population_size={params['population_size']}, generations={params['generations']}, "
+        f"crossover={params['crossover_rate']:.2f}, mutation={params['mutation_rate']:.2f}, seed={params['seed']}\n"
+        f"  качество: MSE={result['mse']:.7g}, RMSE={result['rmse']:.7g}; "
+        f"дерево: {result['size']} узлов, глубина {result['depth']}; время={result['elapsed_seconds']:.3f} с"
+    )
 
 
 def write_csv(path: Path, rows: list[dict]) -> None:
@@ -110,7 +130,7 @@ def plot_comparison(best, x_values, y_values, path: Path) -> None:
     canvas.save(path)
 
 
-def main() -> None:
+def main(verbose: bool = False) -> None:
     x_values, y_values = make_training_data()
     configs = {
         "baseline": dict(population_size=500, generations=150, max_depth=7, crossover_rate=0.85, mutation_rate=0.12),
@@ -169,9 +189,29 @@ def main() -> None:
         "baseline_history": gp.history,
     }
     (RESULTS / "results_summary.json").write_text(json.dumps(summary, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(json.dumps(base_result, ensure_ascii=False, indent=2))
+    print("Лабораторная работа 4 — генетическое программирование для символьной регрессии")
+    print("Цель: f(x) = x^6 - 2*x^4 + x^2; область [-1, 1], 20 точек; фитнесс — MSE.")
+    print("Режим: подробный" if verbose else "Режим: краткий")
+    print("\nИтоги серий:")
+    for result in summaries.values():
+        print(format_run_summary(result))
+    print("\nХод базовой серии (лучший результат поколения):")
+    rows = gp.history if verbose else selected_history_rows(gp.history)
+    if not verbose:
+        rows = selected_history_rows(gp.history)
+    for row in rows:
+        print(f"  поколение {row['generation']:>3}: MSE={row['mse']:.7g}; формула: {row['formula']}")
+    print("\nПараметрические серии (меньше MSE — лучше):")
+    print(f"{'серия':<20} {'MSE':>12} {'RMSE':>12} {'узлы':>6} {'время, с':>10}")
+    for result in list(summaries.values())[1:]:
+        print(f"{result['label']:<20} {result['mse']:>12.5g} {result['rmse']:>12.5g} {result['size']:>6} {result['elapsed_seconds']:>10.3f}")
+    print("\nФайлы результатов:")
+    for filename in ("results_summary.json", "training_data.csv", "parameter_study.csv", "convergence.png", "function_comparison.png", "tree_progress.png"):
+        print(f"  {RESULTS / filename}")
 
 
 if __name__ == "__main__":
-    main()
+    parser = argparse.ArgumentParser(description="Символьная регрессия методом генетического программирования")
+    parser.add_argument("--verbose", action="store_true", help="печатать сводку каждого поколения базового запуска")
+    main(verbose=parser.parse_args().verbose)
 

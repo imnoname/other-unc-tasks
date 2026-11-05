@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import csv
+import argparse
 import json
 import math
 from pathlib import Path
@@ -15,6 +16,22 @@ from evolution_strategy import EvolutionStrategy, Individual, objective
 ROOT = Path(__file__).resolve().parent
 RESULTS = ROOT / "results"
 RESULTS.mkdir(exist_ok=True)
+
+
+def selected_history_rows(history: list[dict]) -> list[dict]:
+    selected = [row for row in history if row["generation"] % 10 == 0]
+    if history and selected[-1]["generation"] != history[-1]["generation"]:
+        selected.append(history[-1])
+    return selected
+
+
+def format_run_summary(result: dict) -> str:
+    return (
+        f"n={result['dimension']}: f(x)={result['best_value']:.7g}; "
+        f"x=[{', '.join(f'{value:.6g}' for value in result['best_x'])}]; "
+        f"расстояние до минимума={result['distance']:.6g}; "
+        f"остановка: поколение {result['generations']}; время={result['time_seconds']:.4f} с"
+    )
 FONT_PATH = r"C:\Windows\Fonts\arial.ttf"
 
 
@@ -111,7 +128,7 @@ def plot_parameter_study(rows: list[dict], path: Path) -> None:
     canvas.save(path)
 
 
-def main() -> None:
+def main(verbose: bool = False) -> None:
     base_results = {}
     for n in (2, 3):
         base_results[n] = EvolutionStrategy(n, population_size=20, mutation_probability=1.0, max_generations=100, seed=4 + n).run()
@@ -151,9 +168,29 @@ def main() -> None:
         "study": study_rows,
     }
     (RESULTS / "results_summary.json").write_text(json.dumps(summary, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(json.dumps({"n2": summary["base"]["2"], "n3": summary["base"]["3"]}, ensure_ascii=False, indent=2))
+    print("Лабораторная работа 5 — оптимизация многомерной функции эволюционной стратегией")
+    print("Вариант 4: f(x)=Σ 5·i·xᵢ², i=1..n; область [-5.12, 5.12]; минимум по формуле f=0 при x=0.")
+    print("Примечание: в таблице методички также указано xᵢ=5·i, что противоречит формуле; расчет выполнен по формуле.")
+    print(f"Параметры: (μ+λ)-ЭС, μ=λ=20, p_mut=1.00, максимум 100 поколений, остановка при 25 поколениях без улучшения или f<1e-12. Режим: {'подробный' if verbose else 'краткий'}.")
+    print("\nРезультаты размерностей:")
+    for n in (2, 3):
+        item = summary["base"][str(n)]
+        print("  " + format_run_summary({"dimension": n, **item}))
+        rows = item["history"] if verbose else selected_history_rows(item["history"])
+        print(f"  Ход поиска n={n} (контрольные поколения):")
+        for row in rows:
+            print(f"    поколение {row['generation']:>3}: лучший f={row['best_value']:.7g}; среднее f={row['mean_value']:.7g}; среднее σ={row['sigma_mean']:.5g}")
+    print("\nИсследование параметров (меньше f — лучше):")
+    print(f"  {'фактор':<22} {'значение':>8} {'лучшее f':>13} {'поколения':>10} {'время, с':>10}")
+    for row in study_rows:
+        print(f"  {row['factor']:<22} {str(row['value']):>8} {row['best_value']:>13.4g} {row['generations']:>10} {row['time_seconds']:>10.4f}")
+    print("\nФайлы результатов:")
+    for filename in ("results_summary.json", "parameter_study.csv", "population_n2.png", "convergence_n2_n3.png", "parameter_study.png", "step_n2_000.png", "step_n2_050.png"):
+        print(f"  {RESULTS / filename}")
 
 
 if __name__ == "__main__":
-    main()
+    parser = argparse.ArgumentParser(description="Оптимизация функции эволюционной стратегией")
+    parser.add_argument("--verbose", action="store_true", help="показывать историю каждого поколения")
+    main(verbose=parser.parse_args().verbose)
 
