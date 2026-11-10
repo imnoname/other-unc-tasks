@@ -1,0 +1,119 @@
+{
+  "model": "Ef = a * L^b",
+  "fitness": "ED = sqrt(mean((actual - predicted)^2))",
+  "split_seed": 3,
+  "training_project_ids": [
+    1,
+    2,
+    3,
+    5,
+    8,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    17,
+    18
+  ],
+  "test_project_ids": [
+    4,
+    6,
+    7,
+    9,
+    16
+  ],
+  "source_anomaly_note": "Project 4 is preserved exactly as printed in the assignment: effort 909.8 person-months.",
+  "ga": {
+    "a": 2.811018363288929,
+    "b": 0.838826198651817,
+    "formula": "Ef = 2.811018 * L^0.838826",
+    "training_metrics": {
+      "ED_RMS_person_months": 9.656727535777431,
+      "MD_sum_absolute_person_months": 88.55171145266655,
+      "MMRE_percent": 26.143376613814507,
+      "max_absolute_error_person_months": 25.9821157925428
+    },
+    "test_metrics": {
+      "ED_RMS_person_months": 370.93683012832355,
+      "MD_sum_absolute_person_months": 848.1612978861183,
+      "MMRE_percent": 34.022228595015775,
+      "max_absolute_error_person_months": 829.3736128610956
+    },
+    "test_metrics_excluding_project_4": {
+      "ED_RMS_person_months": 5.245712963394171,
+      "MD_sum_absolute_person_months": 18.787685025022732,
+      "MMRE_percent": 19.73778758865058,
+      "max_absolute_error_person_months": 8.3593753446062
+    },
+    "generations": 600
+  },
+  "log_linear_baseline": {
+    "a": 2.0434250084058765,
+    "b": 0.9048329320555454,
+    "training_metrics": {
+      "ED_RMS_person_months": 10.149939979410338,
+      "MD_sum_absolute_person_months": 87.52469716271192,
+      "MMRE_percent": 23.160365689759704,
+      "max_absolute_error_person_months": 30.448658523305554
+    },
+    "test_metrics": {
+      "ED_RMS_person_months": 372.8477956359408,
+      "MD_sum_absolute_person_months": 845.9965010009757,
+      "MMRE_percent": 24.760096362809666,
+      "max_absolute_error_person_months": 833.6784816089396
+    }
+  },
+  "repeat_runs": [
+    {
+      "seed": 42,
+      "a": 2.803668776860725,
+      "b": 0.8394480717190225,
+      "train_ED": 9.656767908166909
+    },
+    {
+      "seed": 43,
+      "a": 2.912132042463515,
+      "b": 0.8298768542139745,
+      "train_ED": 9.663575217268052
+    },
+    {
+      "seed": 44,
+      "a": 2.8275707461795667,
+      "b": 0.8374232210289044,
+      "train_ED": 9.656813661019616
+    },
+    {
+      "seed": 45,
+      "a": 2.841734209642813,
+      "b": 0.8363383288356983,
+      "train_ED": 9.657022661459681
+    },
+    {
+      "seed": 46,
+      "a": 2.8065600571538396,
+      "b": 0.8392368644111694,
+      "train_ED": 9.656750413497397
+    },
+    {
+      "seed": 47,
+      "a": 2.811018363288929,
+      "b": 0.838826198651817,
+      "train_ED": 9.656727535777431
+    },
+    {
+      "seed": 48,
+      "a": 2.8333268644013714,
+      "b": 0.8369994835775432,
+      "train_ED": 9.656869723062702
+    },
+    {
+      "seed": 49,
+      "a": 2.8195588144438455,
+      "b": 0.8382143907904552,
+      "train_ED": 9.656754551739681
+    }
+  ],
+  "elapsed_seconds": 28.147312299988698
+}
