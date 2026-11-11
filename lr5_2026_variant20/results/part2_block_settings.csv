@@ -1,0 +1,9 @@
+block,block_type,position,parameters
+Reference,Step,[30 150 65 180],StepTime=0; InitialValue=0; FinalValue=1
+Error,Sum,[120 145 150 185],Inputs=+-
+W1,Gain,[205 150 275 180],Gain=K1
+Disturbance,Step,[315 55 350 85],StepTime=0; InitialValue=0; FinalValue=0
+PlantInput,Sum,[355 145 385 185],Inputs=++
+W2,TransferFcn,[445 152 540 188],Numerator=[1]; Denominator=[0.1 1 1]
+Scope,Scope,[640 152 675 188],
+LogOutput,ToWorkspace,[600 230 690 260],VariableName=yout; SaveFormat=Timeseries
