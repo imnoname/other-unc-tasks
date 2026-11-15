@@ -56,13 +56,14 @@ for i=1:numel(Kvalues)
     [peak,kpeak]=max(y); overshoot=max(0,100*(peak-yss)/abs(yss));
     poleValues=roots([0.1 1 1+K]);
     wn=sqrt((1+K)/0.1); zeta=1/(2*sqrt(0.1*(1+K)));
+    r=ones(size(y)); d=zeros(size(y)); e=r-y; u=K*e;
     row.K=K; row.final_theory=yss; row.final_sim=y(end); row.static_error=1-yss; row.final_error_sim=err;
     row.overshoot_percent=overshoot; row.peak_time=t(kpeak); row.peak_value=peak;
     row.rise_time_10_90=rise90-rise10; row.settling_time_2percent=settling;
     row.wn=wn; row.zeta=zeta; row.pole_1_real=real(poleValues(1)); row.pole_1_imag=imag(poleValues(1));
     row.pole_2_real=real(poleValues(2)); row.pole_2_imag=imag(poleValues(2));
     if isempty(rows), rows=row; else, rows(i)=row; end %#ok<SAGROW>
-    run=struct('K',K,'t',t,'y',y,'yss',yss);
+    run=struct('K',K,'t',t,'r',r,'d',d,'e',e,'u',u,'y',y,'yss',yss);
     if isempty(allRuns), allRuns=run; else, allRuns(i)=run; end %#ok<SAGROW>
     plot(t,y,'LineWidth',1.6,'Color',colors(i,:),'DisplayName',sprintf('K = %g',K));
 end
@@ -89,6 +90,32 @@ end
 xline(0,'k:'); xlabel('Re(s)'); ylabel('Im(s)'); title('Полюса замкнутой системы'); legend('Location','best');
 sgtitle('Ошибки перехода и полюса замкнутой системы');
 exportgraphics(fig,fullfile(figDir,'part2_error_poles.png'),'Resolution',180); close(fig);
+
+% Plot every external and internal loop signal for all gain settings.
+fig=figure('Visible','off','Color','w','Position',[80 80 1500 1050]);
+tiledlayout(2,2,'Padding','compact','TileSpacing','compact');
+for i=1:numel(allRuns)
+    nexttile(1); hold on; grid on; box on;
+    plot(allRuns(i).t,allRuns(i).y,'Color',colors(i,:),'LineWidth',1.35, ...
+        'DisplayName',sprintf('y(t), K=%g',allRuns(i).K));
+    nexttile(2); hold on; grid on; box on;
+    plot(allRuns(i).t,allRuns(i).e,'Color',colors(i,:),'LineWidth',1.35, ...
+        'DisplayName',sprintf('K=%g',allRuns(i).K));
+    nexttile(3); hold on; grid on; box on;
+    plot(allRuns(i).t,allRuns(i).u,'Color',colors(i,:),'LineWidth',1.25, ...
+        'DisplayName',sprintf('K=%g',allRuns(i).K));
+end
+nexttile(1); plot([0 2],[1 1],'k--','LineWidth',1.0,'DisplayName','r(t)=1');
+nexttile(1); xlabel('Время t, с'); ylabel('Сигнал'); title('Задание r(t) и выход y(t)'); legend('Location','best','FontSize',8);
+nexttile(2); xlabel('Время t, с'); ylabel('e(t)=r(t)-y(t)'); title('Ошибка регулирования'); legend('Location','best','FontSize',8);
+nexttile(3); xlabel('Время t, с'); ylabel('u(t)=K e(t)'); title('Выход регулятора'); legend('Location','best','FontSize',8);
+nexttile(4); hold on; grid on; box on;
+plot(allRuns(1).t,allRuns(1).r,'k-','LineWidth',1.4,'DisplayName','Задание r(t)');
+plot(allRuns(1).t,allRuns(1).d,'r--','LineWidth',1.4,'DisplayName','Возмущение d(t)=0');
+xlabel('Время t, с'); ylabel('Входной сигнал'); title('Задающее воздействие и возмущение');
+legend('Location','best'); ylim([-0.1 1.1]);
+sgtitle('Все сигналы замкнутой системы для K=9, 90 и 900');
+exportgraphics(fig,fullfile(figDir,'part2_all_signals.png'),'Resolution',200); close(fig);
 
 % Uniform data table for independent plotting/recalculation.
 tUniform=(0:0.001:2)'; wide=table(tUniform,'VariableNames',{'time_s'});

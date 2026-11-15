@@ -73,6 +73,44 @@ end
 sgtitle('Временные зависимости популяций для всех значений \delta');
 exportgraphics(fig,fullfile(figDir,'part1_time_delta_control.png'),'Resolution',180); close(fig);
 
+% Signal overview: both population states, the controlled macrovariable, and
+% the control action for every prescribed delta at 15 significant digits.
+fig=figure('Visible','off','Color','w','Position',[80 80 1600 1050]);
+tiledlayout(2,2,'Padding','compact','TileSpacing','compact');
+signalColors=lines(numel(deltas));
+ax1=nexttile; hold(ax1,'on'); grid(ax1,'on'); box(ax1,'on');
+ax2=nexttile; hold(ax2,'on'); grid(ax2,'on'); box(ax2,'on');
+ax3=nexttile; hold(ax3,'on'); grid(ax3,'on'); box(ax3,'on');
+ax4=nexttile; hold(ax4,'on'); grid(ax4,'on'); box(ax4,'on');
+for id=1:numel(deltas)
+    delta=deltas(id); color=signalColors(id,:);
+    uncontrolled=find_run(runs,delta,15,false);
+    controlled=find_run(runs,delta,15,true);
+    plot(ax1,uncontrolled.t,uncontrolled.x1,'--','Color',color,'LineWidth',1.05, ...
+        'DisplayName',sprintf('δ=%.6g, без управления',delta));
+    plot(ax1,controlled.t,controlled.x1,'-','Color',color,'LineWidth',1.25, ...
+        'DisplayName',sprintf('δ=%.6g, с управлением',delta));
+    plot(ax2,uncontrolled.t,uncontrolled.x2,'--','Color',color,'LineWidth',1.05, ...
+        'DisplayName',sprintf('δ=%.6g, без управления',delta));
+    plot(ax2,controlled.t,controlled.x2,'-','Color',color,'LineWidth',1.25, ...
+        'DisplayName',sprintf('δ=%.6g, с управлением',delta));
+    semilogy(ax3,controlled.t,max(abs(controlled.psi),1e-16), ...
+        'Color',color,'LineWidth',1.25,'DisplayName',sprintf('δ=%.6g',delta));
+    plot(ax4,controlled.t,controlled.u,'Color',color,'LineWidth',1.2, ...
+        'DisplayName',sprintf('δ=%.6g',delta));
+end
+semilogy(ax3,controlled.t,abs(P.x10-P.rho*P.x20)*exp(-controlled.t/P.T), ...
+    'k--','LineWidth',1.1,'DisplayName','Идеальный закон exp(-t/T)');
+xlabel(ax1,'Время t'); ylabel(ax1,'x_1(t), жертвы'); title(ax1,'Численность жертв');
+xlabel(ax2,'Время t'); ylabel(ax2,'x_2(t), хищники'); title(ax2,'Численность хищников');
+xlabel(ax3,'Время t'); ylabel(ax3,'|\psi(t)|'); title(ax3,'Ошибка макропеременной (лог. шкала)');
+xlabel(ax4,'Время t'); ylabel(ax4,'u_1(t)'); title(ax4,'Управляющее воздействие');
+set(ax3,'YScale','log'); xlim(ax3,[0 10]); ylim(ax3,[1e-16 2]);
+legend(ax1,'Location','best','FontSize',7); legend(ax2,'Location','best','FontSize',7);
+legend(ax3,'Location','best','FontSize',8); legend(ax4,'Location','best','FontSize',8);
+sgtitle('Полный набор временных сигналов популяционной модели');
+exportgraphics(fig,fullfile(figDir,'part1_all_variables.png'),'Resolution',200); close(fig);
+
 % T sensitivity for the macrovariable and control action at delta=0.1.
 Tvalues=[0.5 1 2]; delta=Tvalues(1)*0+0.1; Trows=struct([]);
 fig=figure('Visible','off','Color','w','Position',[100 100 1250 480]);
