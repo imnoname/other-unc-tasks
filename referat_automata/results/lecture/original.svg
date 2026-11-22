@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="460" height="460" viewBox="0 0 460 460">
+<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6" fill="#334155"/></marker></defs>
+<rect width="100%" height="100%" fill="white"/>
+<path d="M237.65247584249852,106.45798706418925 Q260.62137215594606,152.20756817746886 309.61155470564574,158.73931813435738" fill="none" stroke="#334155" marker-end="url(#arrow)"/>
+<text x="267.1266937150091" y="137.4031103883711" text-anchor="middle" font-family="Arial" font-size="13" fill="#1e40af">x/1</text>
+<path d="M223.65247584249852,116.6295824562643 Q215.55623838078063,214.81926719428367 279.2026467053107,287.5954288080138" fill="none" stroke="#334155" marker-end="url(#arrow)"/>
+<text x="233.49189982734262" y="203.46588641321136" text-anchor="middle" font-family="Arial" font-size="13" fill="#1e40af">y/0</text>
+<path d="M319.8820645368942,154.37287570313157 C275.8820645368942,90.37287570313157 391.8820645368942,90.37287570313157 347.8820645368942,154.37287570313157" fill="none" stroke="#334155" marker-end="url(#arrow)"/>
+<text x="333.8820645368942" y="108.37287570313157" text-anchor="middle" font-family="Arial" font-size="13" fill="#1e40af">x/1</text>
+<path d="M325.22958869439566,203.00245815939587 Q288.81693076172877,238.9845747199464 297.7436663678076,287.5954288080138" fill="none" stroke="#334155" marker-end="url(#arrow)"/>
+<text x="300.15177914641515" y="237.14175910182564" text-anchor="middle" font-family="Arial" font-size="13" fill="#1e40af">y/0</text>
+<path d="M260.47315653655915,316.12712429686843 Q215.0,292.6157142051695 171.52684346344085,316.12712429686843" fill="none" stroke="#334155" marker-end="url(#arrow)"/>
+<text x="215.5" y="299.371419251019" text-anchor="middle" font-family="Arial" font-size="13" fill="#1e40af">x/2</text>
+<path d="M274.47315653655915,294.12712429686843 C230.47315653655915,230.12712429686843 346.47315653655915,230.12712429686843 302.47315653655915,294.12712429686843" fill="none" stroke="#334155" marker-end="url(#arrow)"/>
+<text x="288.47315653655915" y="248.12712429686843" text-anchor="middle" font-family="Arial" font-size="13" fill="#1e40af">y/0</text>
+<path d="M127.52684346344085,294.12712429686843 C83.52684346344085,230.12712429686843 199.52684346344085,230.12712429686843 155.52684346344085,294.12712429686843" fill="none" stroke="#334155" marker-end="url(#arrow)"/>
+<text x="141.52684346344085" y="248.12712429686843" text-anchor="middle" font-family="Arial" font-size="13" fill="#1e40af">x/2</text>
+<path d="M132.87436762094234,289.49754184060413 Q141.18306923827123,238.98457471994638 105.38844529435423,204.9045711919862" fill="none" stroke="#334155" marker-end="url(#arrow)"/>
+<text x="130.15723784795975" y="238.09281561812077" text-anchor="middle" font-family="Arial" font-size="13" fill="#1e40af">y/3</text>
+<path d="M104.77041130560433,203.0024581593959 Q96.46170968827543,253.51542528005362 132.25633363219242,287.5954288080138" fill="none" stroke="#334155" marker-end="url(#arrow)"/>
+<text x="107.4875410785869" y="244.40718438187923" text-anchor="middle" font-family="Arial" font-size="13" fill="#1e40af">x/2</text>
+<path d="M82.1179354631058,154.3728757031316 C38.117935463105795,90.3728757031316 154.1179354631058,90.3728757031316 110.1179354631058,154.3728757031316" fill="none" stroke="#334155" marker-end="url(#arrow)"/>
+<text x="96.1179354631058" y="108.3728757031316" text-anchor="middle" font-family="Arial" font-size="13" fill="#1e40af">y/3</text>
+<circle cx="215.0" cy="90.0" r="26" stroke="#334155" fill="#e0f2fe"/>
+<path d="M150.0,90.0 L187.0,90.0" stroke="#334155" marker-end="url(#arrow)"/>
+<text x="215.0" y="95.0" text-anchor="middle" font-family="Arial" font-size="15">q1</text>
+<circle cx="333.8820645368942" cy="176.37287570313157" r="26" stroke="#334155" fill="#e0f2fe"/>
+<text x="333.8820645368942" y="181.37287570313157" text-anchor="middle" font-family="Arial" font-size="15">q2</text>
+<circle cx="288.47315653655915" cy="316.12712429686843" r="26" stroke="#334155" fill="#e0f2fe"/>
+<text x="288.47315653655915" y="321.12712429686843" text-anchor="middle" font-family="Arial" font-size="15">q3</text>
+<circle cx="141.52684346344085" cy="316.12712429686843" r="26" stroke="#334155" fill="#e0f2fe"/>
+<text x="141.52684346344085" y="321.12712429686843" text-anchor="middle" font-family="Arial" font-size="15">q4</text>
+<circle cx="96.1179354631058" cy="176.3728757031316" r="26" stroke="#334155" fill="#e0f2fe"/>
+<text x="96.1179354631058" y="181.3728757031316" text-anchor="middle" font-family="Arial" font-size="15">q5</text>
+</svg>

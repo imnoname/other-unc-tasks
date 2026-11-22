@@ -1,0 +1,542 @@
+[
+  {
+    "id": "E01",
+    "name": "Проверка до построения",
+    "expected": "Сообщение «Сначала постройте автомат»",
+    "actual": "Сначала постройте автомат.",
+    "passed": true,
+    "error": null,
+    "screenshot": "E01.png"
+  },
+  {
+    "id": "E02",
+    "name": "Синтез по ЛР5",
+    "expected": "6 исходных, 4 минимальных состояния; эквивалентность",
+    "actual": "Готово: 6 → 4 состояний; эквивалентность подтверждена (6 пар)",
+    "passed": true,
+    "error": null,
+    "screenshot": "E02.png"
+  },
+  {
+    "id": "E03",
+    "name": "Места и распространение индексов",
+    "expected": "Таблица подчинения и сырые подмножества",
+    "actual": "Готово: 6 → 4 состояний; эквивалентность подтверждена (6 пар)",
+    "passed": true,
+    "error": null,
+    "screenshot": "E03.png"
+  },
+  {
+    "id": "E04",
+    "name": "Разбиения распознавателя",
+    "expected": "Устойчивые классы и точная эквивалентность",
+    "actual": "Готово: 6 → 4 состояний; эквивалентность подтверждена (6 пар)",
+    "passed": true,
+    "error": null,
+    "screenshot": "E04.png"
+  },
+  {
+    "id": "E05",
+    "name": "Исходный граф",
+    "expected": "Граф шести состояний, включая отказ",
+    "actual": "Готово: 6 → 4 состояний; эквивалентность подтверждена (6 пар)",
+    "passed": true,
+    "error": null,
+    "screenshot": "E05.png"
+  },
+  {
+    "id": "E06",
+    "name": "Минимальный граф лекции",
+    "expected": "Граф трёх классов Мили",
+    "actual": "Готово: 5 → 3 состояний; эквивалентность подтверждена (5 пар)",
+    "passed": true,
+    "error": null,
+    "screenshot": "E06.png"
+  },
+  {
+    "id": "E07",
+    "name": "Допустимое слово ad",
+    "expected": "Допустимо; выходы 0, 1",
+    "actual": "ДОПУСТИМО",
+    "passed": true,
+    "error": null,
+    "screenshot": "E07.png"
+  },
+  {
+    "id": "E08",
+    "name": "Незавершённое слово ab",
+    "expected": "Отклонено; выходы 0, 0",
+    "actual": "ОТКЛОНЕНО",
+    "passed": true,
+    "error": null,
+    "screenshot": "E08.png"
+  },
+  {
+    "id": "E09",
+    "name": "Продолжение принятого слова add",
+    "expected": "Отклонено после последнего символа",
+    "actual": "ОТКЛОНЕНО",
+    "passed": true,
+    "error": null,
+    "screenshot": "E09.png"
+  },
+  {
+    "id": "E10",
+    "name": "Символ вне алфавита az",
+    "expected": "Ошибка на второй позиции",
+    "actual": "ОШИБКА ВХОДНОГО СЛОВА: Символ «z» не входит в алфавит (позиция 2).",
+    "passed": true,
+    "error": null,
+    "screenshot": "E10.png"
+  },
+  {
+    "id": "E11",
+    "name": "Пустое слово для a<b|c>d",
+    "expected": "Отклонено; ноль переходов",
+    "actual": "ОТКЛОНЕНО",
+    "passed": true,
+    "error": null,
+    "screenshot": "E11.png"
+  },
+  {
+    "id": "E12",
+    "name": "Пустое слово для <a>",
+    "expected": "Допустимо; ноль выходных сигналов",
+    "actual": "ДОПУСТИМО",
+    "passed": true,
+    "error": null,
+    "screenshot": "E12.png"
+  },
+  {
+    "id": "E13",
+    "name": "Выражение ε",
+    "expected": "Единственное конечное состояние; пустое слово принято",
+    "actual": "ДОПУСТИМО",
+    "passed": true,
+    "error": null,
+    "screenshot": "E13.png"
+  },
+  {
+    "id": "E14",
+    "name": "Вложенность и альтернатива",
+    "expected": "(<a><a>|<bε>) отклоняет ab",
+    "actual": "ОТКЛОНЕНО",
+    "passed": true,
+    "error": null,
+    "screenshot": "E14.png"
+  },
+  {
+    "id": "E15",
+    "name": "Типографские скобки и пробелы",
+    "expected": "a⟨b|c⟩d принимает abcd",
+    "actual": "ДОПУСТИМО",
+    "passed": true,
+    "error": null,
+    "screenshot": "E15.png"
+  },
+  {
+    "id": "E16",
+    "name": "Незакрытая скобка",
+    "expected": "Ошибка с позицией; результат сброшен",
+    "actual": "Ошибка: Ожидалась скобка ). Позиция 3.",
+    "passed": true,
+    "error": null,
+    "screenshot": "E16.png"
+  },
+  {
+    "id": "E17",
+    "name": "Пустая альтернатива",
+    "expected": "Ошибка пустой ветви",
+    "actual": "Ошибка: Пустая ветвь; для пустого слова используйте ε. Позиция 3.",
+    "passed": true,
+    "error": null,
+    "screenshot": "E17.png"
+  },
+  {
+    "id": "E18",
+    "name": "Неподдерживаемая операция",
+    "expected": "a* отклоняется как неверное РВ",
+    "actual": "Ошибка: Недопустимый символ «*». Позиция 2.",
+    "passed": true,
+    "error": null,
+    "screenshot": "E18.png"
+  },
+  {
+    "id": "E19",
+    "name": "Лимит длины выражения",
+    "expected": "301 знак: отказ до синтеза",
+    "actual": "Ошибка: Выражение длиннее 300 символов.",
+    "passed": true,
+    "error": null,
+    "screenshot": "E19.png"
+  },
+  {
+    "id": "E20",
+    "name": "Лимит вложенности",
+    "expected": "41 уровень: сообщение о лимите 40",
+    "actual": "Ошибка: Глубина вложенности больше 40. Позиция 41.",
+    "passed": true,
+    "error": null,
+    "screenshot": "E20.png"
+  },
+  {
+    "id": "E21",
+    "name": "Нечисловой лимит состояний",
+    "expected": "Сообщение о целом числе",
+    "actual": "Ошибка: Лимит состояний должен быть целым числом.",
+    "passed": true,
+    "error": null,
+    "screenshot": "E21.png"
+  },
+  {
+    "id": "E22",
+    "name": "Превышение числа состояний",
+    "expected": "ab с лимитом 1: контролируемый отказ",
+    "actual": "Ошибка: Превышен лимит 1 состояний.",
+    "passed": true,
+    "error": null,
+    "screenshot": "E22.png"
+  },
+  {
+    "id": "E23",
+    "name": "Лимит длины слова",
+    "expected": "10001 знак: сообщение о лимите 10000",
+    "actual": "Ошибка: Слово должно быть строкой длиной до 10000 символов.",
+    "passed": true,
+    "error": null,
+    "screenshot": "E23.png"
+  },
+  {
+    "id": "E24",
+    "name": "Лекционный пример минимизации",
+    "expected": "5 состояний → 3 класса",
+    "actual": "Готово: 5 → 3 состояний; эквивалентность подтверждена (5 пар)",
+    "passed": true,
+    "error": null,
+    "screenshot": "E24.png"
+  },
+  {
+    "id": "E25",
+    "name": "Выходы лекционного автомата",
+    "expected": "xyx даёт 1, 0, 2 до и после минимизации",
+    "actual": "ВЫХОДНОЕ СЛОВО: 1, 0, 2",
+    "passed": true,
+    "error": null,
+    "screenshot": "E25.png"
+  },
+  {
+    "id": "E26",
+    "name": "Пустой вход автомата Мили",
+    "expected": "Выходное слово ε без классификации допустимости",
+    "actual": "ВЫХОДНОЕ СЛОВО: ε",
+    "passed": true,
+    "error": null,
+    "screenshot": "E26.png"
+  },
+  {
+    "id": "E27",
+    "name": "Синтаксическая ошибка JSON",
+    "expected": "Номер строки и столбца ошибки",
+    "actual": "Ошибка: Ошибка JSON: строка 1, столбец 2.",
+    "passed": true,
+    "error": null,
+    "screenshot": "E27.png"
+  },
+  {
+    "id": "E28",
+    "name": "Неизвестная цель перехода JSON",
+    "expected": "Ошибка неизвестного состояния",
+    "actual": "Ошибка: q1, x: неизвестное состояние назначения.",
+    "passed": true,
+    "error": null,
+    "screenshot": "E28.png"
+  },
+  {
+    "id": "E29",
+    "name": "Неполный автомат JSON",
+    "expected": "Требование перехода на каждый вход",
+    "actual": "Ошибка: q1: задайте ровно один переход на каждый символ алфавита.",
+    "passed": true,
+    "error": null,
+    "screenshot": "E29.png"
+  },
+  {
+    "id": "E30",
+    "name": "Недостижимое состояние",
+    "expected": "unused удалено; результат содержит 3 класса",
+    "actual": "Готово: 6 → 3 состояний; эквивалентность подтверждена (5 пар)",
+    "passed": true,
+    "error": null,
+    "screenshot": "E30.png"
+  },
+  {
+    "id": "E31",
+    "name": "Несколько уточнений",
+    "expected": "Число классов 2 → 3 → 4 → 4",
+    "actual": "Готово: 4 → 4 состояний; эквивалентность подтверждена (4 пар)",
+    "passed": true,
+    "error": null,
+    "screenshot": "E31.png"
+  },
+  {
+    "id": "E32",
+    "name": "Одноклассовый минимальный автомат",
+    "expected": "<a>: 2 исходных состояния объединены в 1 класс",
+    "actual": "Готово: 2 → 1 состояний; эквивалентность подтверждена (2 пар)",
+    "passed": true,
+    "error": null,
+    "screenshot": "E32.png"
+  },
+  {
+    "id": "E33",
+    "name": "Чтение TXT",
+    "expected": "Выражение прочитано и построено",
+    "actual": "Готово: 6 → 4 состояний; эквивалентность подтверждена (6 пар)",
+    "passed": true,
+    "error": null,
+    "screenshot": "E33.png"
+  },
+  {
+    "id": "E34",
+    "name": "Чтение JSON",
+    "expected": "Лекционный автомат прочитан и минимизирован",
+    "actual": "Готово: 5 → 3 состояний; эквивалентность подтверждена (5 пар)",
+    "passed": true,
+    "error": null,
+    "screenshot": "E34.png"
+  },
+  {
+    "id": "E35",
+    "name": "Отмена открытия",
+    "expected": "Текущий автомат сохранён",
+    "actual": "Открытие отменено.",
+    "passed": true,
+    "error": null,
+    "screenshot": "E35.png"
+  },
+  {
+    "id": "E36",
+    "name": "Отсутствующий файл",
+    "expected": "Диагностика чтения; окно продолжает работу",
+    "actual": "Ошибка: Не удалось прочитать файл: [WinError 2] Не удается найти указанный файл: 'C:\\\\Users\\\\theju\\\\OneDrive\\\\Документы\\\\ChatGPT\\\\учеба\\\\referat_automata\\\\results\\\\qa_files\\\\missing.txt'",
+    "passed": true,
+    "error": null,
+    "screenshot": "E36.png"
+  },
+  {
+    "id": "E37",
+    "name": "Неверная кодировка",
+    "expected": "Диагностика UTF-8",
+    "actual": "Ошибка: Не удалось прочитать файл: 'utf-8' codec can't decode byte 0xff in position 0: invalid start byte",
+    "passed": true,
+    "error": null,
+    "screenshot": "E37.png"
+  },
+  {
+    "id": "E38",
+    "name": "Слишком большой файл",
+    "expected": "Файл больше 32 МБ отклонён",
+    "actual": "Ошибка: Входной файл больше 32 МБ.",
+    "passed": true,
+    "error": null,
+    "screenshot": "E38.png"
+  },
+  {
+    "id": "E39",
+    "name": "Экспорт комплекта",
+    "expected": "Созданы JSON ×2, SVG ×2 и протокол TXT",
+    "actual": "Сохранено 5 файлов: C:\\Users\\theju\\OneDrive\\Документы\\ChatGPT\\учеба\\referat_automata\\results\\qa_files\\exported",
+    "passed": true,
+    "error": null,
+    "screenshot": "E39.png"
+  },
+  {
+    "id": "E40",
+    "name": "Отмена экспорта",
+    "expected": "Текущий результат сохранён",
+    "actual": "Экспорт отменён.",
+    "passed": true,
+    "error": null,
+    "screenshot": "E40.png"
+  },
+  {
+    "id": "E41",
+    "name": "Ошибка сохранения",
+    "expected": "Путь является файлом; вывод диагностики",
+    "actual": "Ошибка: Не удалось сохранить комплект: [WinError 183] Невозможно создать файл, так как он уже существует: 'C:\\\\Users\\\\theju\\\\OneDrive\\\\Документы\\\\ChatGPT\\\\учеба\\\\referat_automata\\\\results\\\\qa_files\\\\block'",
+    "passed": true,
+    "error": null,
+    "screenshot": "E41.png"
+  },
+  {
+    "id": "E42",
+    "name": "Очистка",
+    "expected": "Данные и результаты сброшены",
+    "actual": "Поля очищены. Результат сброшен.",
+    "passed": true,
+    "error": null,
+    "screenshot": "E42.png"
+  },
+  {
+    "id": "E43",
+    "name": "Восстановление после ошибки",
+    "expected": "После неверного РВ повторное построение успешно",
+    "actual": "Готово: 6 → 4 состояний; эквивалентность подтверждена (6 пар)",
+    "passed": true,
+    "error": null,
+    "screenshot": "E43.png"
+  },
+  {
+    "id": "E44",
+    "name": "Изменение входа",
+    "expected": "Старый автомат сброшен до нового построения",
+    "actual": "Вход изменён. Нажмите «Построить».",
+    "passed": true,
+    "error": null,
+    "screenshot": "E44.png"
+  },
+  {
+    "id": "E45",
+    "name": "Встроенная справка",
+    "expected": "Синтаксис, алгоритмы, лимиты и операции доступны",
+    "actual": "Вход изменён. Нажмите «Построить».",
+    "passed": true,
+    "error": null,
+    "screenshot": "E45.png"
+  },
+  {
+    "id": "E46",
+    "name": "Пустое регулярное выражение",
+    "expected": "Сообщение о необходимости ввода",
+    "actual": "Ошибка: Введите регулярное выражение.",
+    "passed": true,
+    "error": null,
+    "screenshot": "E46.png"
+  },
+  {
+    "id": "E47",
+    "name": "Лимит вне диапазона",
+    "expected": "Число 513 отклонено; допустимо 1…512",
+    "actual": "Ошибка: Лимит состояний должен быть целым числом от 1 до 512.",
+    "passed": true,
+    "error": null,
+    "screenshot": "E47.png"
+  },
+  {
+    "id": "E48",
+    "name": "Слишком длинное число JSON",
+    "expected": "5000 цифр: контролируемая ошибка парсера",
+    "actual": "Ошибка: Ошибка JSON: превышен предел вложенности или длины числа.",
+    "passed": true,
+    "error": null,
+    "screenshot": "E48.png"
+  },
+  {
+    "id": "E49",
+    "name": "Чрезмерно вложенный JSON",
+    "expected": "10000 скобок: контролируемая ошибка парсера",
+    "actual": "Ошибка: Ошибка JSON: превышен предел вложенности или длины числа.",
+    "passed": true,
+    "error": null,
+    "screenshot": "E49.png"
+  },
+  {
+    "id": "E50",
+    "name": "Неверный корень JSON",
+    "expected": "Список вместо объекта автомата отклонён",
+    "actual": "Ошибка: JSON должен содержать объект автомата.",
+    "passed": true,
+    "error": null,
+    "screenshot": "E50.png"
+  },
+  {
+    "id": "E51",
+    "name": "Повтор имён состояний",
+    "expected": "Дубли states отклонены",
+    "actual": "Ошибка: Поле states: повторяющиеся элементы.",
+    "passed": true,
+    "error": null,
+    "screenshot": "E51.png"
+  },
+  {
+    "id": "E52",
+    "name": "Многосимвольный вход JSON",
+    "expected": "Вход xx отклонён",
+    "actual": "Ошибка: Входной символ должен быть одним непробельным знаком.",
+    "passed": true,
+    "error": null,
+    "screenshot": "E52.png"
+  },
+  {
+    "id": "E53",
+    "name": "Неизвестное начальное состояние",
+    "expected": "start=ghost отклонено",
+    "actual": "Ошибка: Начальное состояние не принадлежит states.",
+    "passed": true,
+    "error": null,
+    "screenshot": "E53.png"
+  },
+  {
+    "id": "E54",
+    "name": "Неверный тип recognizer",
+    "expected": "Строка вместо bool отклонена",
+    "actual": "Ошибка: recognizer должен быть true или false.",
+    "passed": true,
+    "error": null,
+    "screenshot": "E54.png"
+  },
+  {
+    "id": "E55",
+    "name": "Неизвестное конечное состояние",
+    "expected": "finals=[ghost] отклонено",
+    "actual": "Ошибка: finals должен содержать только объявленные состояния.",
+    "passed": true,
+    "error": null,
+    "screenshot": "E55.png"
+  },
+  {
+    "id": "E56",
+    "name": "Пустые скобки",
+    "expected": "() отклоняется; используйте ε",
+    "actual": "Ошибка: Пустая ветвь; для пустого слова используйте ε. Позиция 2.",
+    "passed": true,
+    "error": null,
+    "screenshot": "E56.png"
+  },
+  {
+    "id": "E57",
+    "name": "Лишняя закрывающая скобка",
+    "expected": "a) отклоняется с позицией",
+    "actual": "Ошибка: Лишняя закрывающая скобка. Позиция 2.",
+    "passed": true,
+    "error": null,
+    "screenshot": "E57.png"
+  },
+  {
+    "id": "E58",
+    "name": "Проверка границы длины слова",
+    "expected": "10000 букв a допустимы для <a>",
+    "actual": "ДОПУСТИМО",
+    "passed": true,
+    "error": null,
+    "screenshot": "E58.png"
+  },
+  {
+    "id": "E59",
+    "name": "Повторное построение",
+    "expected": "Повторное построение даёт тот же автомат",
+    "actual": "Готово: 6 → 4 состояний; эквивалентность подтверждена (6 пар)",
+    "passed": true,
+    "error": null,
+    "screenshot": "E59.png"
+  },
+  {
+    "id": "E60",
+    "name": "Экспорт до построения",
+    "expected": "Сообщение «Сначала постройте автомат»",
+    "actual": "Сначала постройте автомат.",
+    "passed": true,
+    "error": null,
+    "screenshot": "E60.png"
+  }
+]

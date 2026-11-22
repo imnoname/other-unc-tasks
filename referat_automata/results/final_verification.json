@@ -1,0 +1,16 @@
+{
+  "report_pages": 137,
+  "gui_scenarios": 60,
+  "screenshots": 60,
+  "unittest": 22,
+  "word_checks": 44382,
+  "mismatches": 0,
+  "visual_review": "All pages reviewed; final 98 pages matched prior reviewed rasters, 39 changed pages re-inspected",
+  "layout_out_of_bounds": 0,
+  "archive_smoke_passed": true,
+  "files": {
+    "Реферат_Синтез_и_минимизация_КА.docx": "b824af82ca1f011a654072c86015e6bde626d90be64dc87a99e30cb0e57c7934",
+    "Реферат_Синтез_и_минимизация_КА.pdf": "2d0ccb8647266d9815504aaaa90ee6be6dca361b7f32f3ab2acb680909edf666",
+    "Реферат_и_программа_КА.zip": "0637e08f5f42886b65f57f2fba1c2a4e691941dd8b03c2ca08c7c2e694c3fd4f"
+  }
+}

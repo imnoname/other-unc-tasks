@@ -1,0 +1,17 @@
+# Python and editor caches
+__pycache__/
+*.py[cod]
+~$*
+
+# Keep reproducible results; omit temporary renders and generated error fixtures.
+results/*
+!results/unittest.txt
+!results/experiments.json
+!results/gui_events.json
+!results/variants.csv
+!results/word_checks.csv
+!results/screenshot_manifest.json
+!results/release_layout.json
+!results/final_verification.json
+!results/lab5/
+!results/lecture/

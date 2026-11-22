@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="410" height="410" viewBox="0 0 410 410">
+<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6" fill="#334155"/></marker></defs>
+<rect width="100%" height="100%" fill="white"/>
+<path d="M176.0,68.0 C132.0,4.0 248.0,4.0 204.0,68.0" fill="none" stroke="#334155" marker-end="url(#arrow)"/>
+<text x="190.0" y="22.0" text-anchor="middle" font-family="Arial" font-size="13" fill="#1e40af">x/1</text>
+<path d="M204.0,114.24871130596428 Q209.30127018922195,178.85640646055103 261.6025403784439,214.01923788646684" fill="none" stroke="#334155" marker-end="url(#arrow)"/>
+<text x="221.05127018922195" y="166.4951905283833" text-anchor="middle" font-family="Arial" font-size="13" fill="#1e40af">y/0</text>
+<path d="M248.6025403784439,240.0 Q190.00000000000003,212.28718707889794 133.39745962155615,240.00000000000003" fill="none" stroke="#334155" marker-end="url(#arrow)"/>
+<text x="190.50000000000003" y="221.14359353944897" text-anchor="middle" font-family="Arial" font-size="13" fill="#1e40af">x/2</text>
+<path d="M262.6025403784439,218.0 C218.6025403784439,154.0 334.6025403784439,154.0 290.6025403784439,218.0" fill="none" stroke="#334155" marker-end="url(#arrow)"/>
+<text x="276.6025403784439" y="172.0" text-anchor="middle" font-family="Arial" font-size="13" fill="#1e40af">y/0</text>
+<path d="M89.39745962155615,218.00000000000003 C45.39745962155615,154.00000000000003 161.39745962155615,154.00000000000003 117.39745962155615,218.00000000000003" fill="none" stroke="#334155" marker-end="url(#arrow)"/>
+<text x="103.39745962155615" y="172.00000000000003" text-anchor="middle" font-family="Arial" font-size="13" fill="#1e40af">x/2, y/3</text>
+<circle cx="190.0" cy="90.0" r="26" stroke="#334155" fill="#e0f2fe"/>
+<path d="M125.0,90.0 L162.0,90.0" stroke="#334155" marker-end="url(#arrow)"/>
+<text x="190.0" y="95.0" text-anchor="middle" font-family="Arial" font-size="15">A</text>
+<circle cx="276.6025403784439" cy="240.0" r="26" stroke="#334155" fill="#e0f2fe"/>
+<text x="276.6025403784439" y="245.0" text-anchor="middle" font-family="Arial" font-size="15">B</text>
+<circle cx="103.39745962155615" cy="240.00000000000003" r="26" stroke="#334155" fill="#e0f2fe"/>
+<text x="103.39745962155615" y="245.00000000000003" text-anchor="middle" font-family="Arial" font-size="15">C</text>
+</svg>
