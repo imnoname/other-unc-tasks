@@ -1,6 +1,7 @@
 """Сборка реферата на официальном бланке ГУАП с фактическими данными."""
 from pathlib import Path
 from copy import deepcopy
+import ast
 import json
 import re
 from docx import Document
@@ -14,6 +15,9 @@ from core import synthesize, minimize, lecture_machine, run, compare
 BASE=Path(__file__).resolve().parent
 EX=json.loads((BASE/'results/experiments.json').read_text(encoding='utf-8'))
 EVENTS=json.loads((BASE/'results/gui_events.json').read_text(encoding='utf-8'))
+INPUTS=json.loads((BASE/'docs/scenario_inputs.json').read_text(encoding='utf-8'))
+NOTES=json.loads((BASE/'docs/function_reference.json').read_text(encoding='utf-8'))
+NOTES.update(json.loads((BASE/'docs/function_reference_aux.json').read_text(encoding='utf-8')))
 D=Document(BASE/'sources/guap_referat_title.docx')
 TABLE=0; FIGURE=0
 if 'Table Grid' not in D.styles:
@@ -71,7 +75,7 @@ def equation(text):
 def table(title,headers,rows,number=None,continued=False):
     global TABLE
     if number is None:TABLE+=1;number=TABLE
-    caption=D.add_paragraph(('Продолжение таблицы ' if continued else 'Таблица ')+str(number)+('' if continued else ' — '+title))
+    caption=D.add_paragraph(('Продолжение таблицы ' if continued else 'Таблица ')+str(number)+('' if continued else ' - '+title))
     pf(caption,size=12,align=WD_ALIGN_PARAGRAPH.LEFT,indent=0,line=1)
     caption.paragraph_format.keep_with_next=True;caption.paragraph_format.space_before=Pt(6)
     t=D.add_table(rows=1,cols=len(headers));t.style='Table Grid';t.autofit=True
@@ -81,11 +85,12 @@ def table(title,headers,rows,number=None,continued=False):
     repeat=OxmlElement('w:tblHeader');t.rows[0]._tr.get_or_add_trPr().append(repeat)
     for row in rows:
         for cell,value in zip(t.add_row().cells,row):cell.text=str(value)
-    for row in t.rows:
+    for row_index,row in enumerate(t.rows):
         no=OxmlElement('w:cantSplit');row._tr.get_or_add_trPr().append(no)
         for cell in row.cells:
             for par in cell.paragraphs:
                 pf(par,size=12,align=WD_ALIGN_PARAGRAPH.CENTER,indent=0,line=1)
+                par.paragraph_format.keep_with_next=(row_index==0)
                 par.paragraph_format.space_after=Pt(3);par.paragraph_format.space_before=Pt(3)
     D.add_paragraph().paragraph_format.space_after=Pt(0)
     return number
@@ -105,7 +110,7 @@ def picture(path,title,width=16.5,label=None):
     par=D.add_paragraph();pf(par,align=WD_ALIGN_PARAGRAPH.CENTER,indent=0,line=1)
     par.paragraph_format.keep_with_next=True
     par.add_run().add_picture(str(path),width=Cm(width))
-    caption=D.add_paragraph(f'Рисунок {label or FIGURE} — {title}')
+    caption=D.add_paragraph(f'Рисунок {label or FIGURE} - {title}')
     pf(caption,size=12,align=WD_ALIGN_PARAGRAPH.CENTER,indent=0,line=1)
     caption.paragraph_format.space_after=Pt(8)
 
@@ -182,20 +187,20 @@ lecture=lecture_machine();lm,lp,lmap=minimize(lecture)
 def data(name):
     if name=='places':
         p(f'Разметка выражения приведена в таблице {TABLE+1}. Индекс места p соответствует номеру зазора с нуля.')
-        rows=[[a['place'],a['before'],a['after'],a['main'] if a['main'] is not None else '—',
-               ','.join(map(str,a['indices'])) or '—',','.join(map(str,a['subordinates']))]
+        rows=[[a['place'],a['before'],a['after'],a['main'] if a['main'] is not None else '-',
+               ','.join(map(str,a['indices'])) or '-',','.join(map(str,a['subordinates']))]
               for a in m.details['places']]
         table('Места и распространённые индексы',['p','Слева','Справа','Осн.','Все индексы','Подчинённые'],rows)
     elif name=='raw':
-        p(f'В таблице {TABLE+1} показан исходный полный автомат. Символ → отмечает начало, * — конечность.')
+        p(f'В таблице {TABLE+1} показан исходный полный автомат. Символ → отмечает начало, * - конечность.')
         machine_table(m,'Исходные переходы и выходы')
         p('Метки состояний: '+ '; '.join(q+' = '+('{'+','.join(map(str,s))+'}' if s else '{}') for q,s in m.details['subsets'].items())+'.')
     elif name=='regex_partitions':
         for i,blocks in enumerate(parts):p(f'P{i} = '+'; '.join('{'+', '.join(b)+'}' for b in blocks)+'.')
     elif name=='minimal':
-        p(f'Итоговые переходы приведены в таблице {TABLE+1}; автоматная матрица — в таблице {TABLE+2}.')
+        p(f'Итоговые переходы приведены в таблице {TABLE+1}; автоматная матрица - в таблице {TABLE+2}.')
         machine_table(small,'Минимальный распознаватель')
-        rows=[[q]+[', '.join(x+'/'+out for x,(target,out) in small.transitions[q].items() if target==t) or '—' for t in small.states] for q in small.states]
+        rows=[[q]+[', '.join(x+'/'+out for x,(target,out) in small.transitions[q].items() if target==t) or '-' for t in small.states] for q in small.states]
         table('Автоматная матрица минимального распознавателя',['Q / Q']+small.states,rows)
     elif name=='regex_examples':
         p(f'В таблице {TABLE+1} сопоставлены результаты для характерных слов.')
@@ -221,7 +226,30 @@ def data(name):
         num=table('Результаты синтеза и минимизации всех вариантов ЛР №5',['№','Выражение','Исх.','Мин.','Слов'],column_numbers+rows[:15])
         D.add_page_break();table('', ['№','Выражение','Исх.','Мин.','Слов'],column_numbers+rows[15:],number=num,continued=True)
     elif name=='experiment_summary':
-        p(f'Для 30 учебных выражений выполнено {sum(r["checks"] for r in EX["variants"]):,} проверок слов; для 120 сгенерированных выражений — 7 560. Всего зарегистрировано {EX["word_checks"]:,} пар «выражение — слово». Расхождений с оракулом: {EX["mismatches"]}. Во всех случаях исходный и минимальный автоматы также прошли точное сравнение.'.replace(',',' '))
+        p(f'Для 30 учебных выражений выполнено {sum(r["checks"] for r in EX["variants"]):,} проверок слов; для 120 сгенерированных выражений - 7 560. Всего зарегистрировано {EX["word_checks"]:,} пар «выражение - слово». Расхождений с оракулом: {EX["mismatches"]}. Во всех случаях исходный и минимальный автоматы также прошли точное сравнение.'.replace(',',' '))
+    elif name=='input_contract':
+        p('Пример входа Мили JSON повторяет таблицу лекции. Его можно вставить в поле целиком или открыть examples/lecture.json:')
+        payload=lecture.to_dict()
+        lines=['{', '  "states": '+json.dumps(payload['states'])+',',
+               '  "alphabet": ["x", "y"],', '  "start": "q1",',
+               '  "recognizer": false,', '  "transitions": {']
+        for i,q in enumerate(lecture.states):
+            lines.append('    '+json.dumps(q)+': '+json.dumps(payload['transitions'][q])+(',' if i<len(lecture.states)-1 else ''))
+        lines+=['  }','}']
+        inline_code('\n'.join(lines))
+        p('Для вызова ядра напрямую вход и результат связываются следующим образом:')
+        table('Данные на входе и результат основных операций', ['Операция','Вход','Ожидаемый результат'],[
+            ['synthesize','a<b|c>d, лимит 256','Machine: 6 состояний, recognizer=True'],
+            ['minimize','Построенный Machine','Machine из 4 состояний, разбиения и mapping'],
+            ['run','Распознаватель и ad','accepted=True; outputs=[0,1]; 2 шага'],
+            ['run','Лекционный Мили и xyx','accepted=None; outputs=[1,0,2]; 3 шага'],
+            ['compare','Исходный и минимальный автоматы','equivalent=True; witness=None']])
+        p('В таблице выходы для краткости записаны числами. В объекте Machine и словаре run они хранятся строками, например outputs=["1", "0", "2"]. Ниже полный результат run на входе xyx представлен в JSON; null соответствует None в Python:')
+        result=run(lecture,'xyx')
+        lines=['{','  "accepted": null, "error": null,','  "trace": [']
+        lines += ['    '+json.dumps(step)+(',' if i<len(result['trace'])-1 else '') for i,step in enumerate(result['trace'])]
+        lines += ['  ],','  "outputs": ["1", "0", "2"], "state": "q4"','}']
+        inline_code('\n'.join(lines))
     elif name=='events':
         # Эти три снимка относятся к прежним сообщениям; их нельзя выдавать за
         # финальную версию. После нового прогона список становится пустым.
@@ -235,8 +263,9 @@ def data(name):
             pf(par,align=WD_ALIGN_PARAGRAPH.LEFT,indent=0)
             for r in par.runs:font(r,bold=True)
             par.paragraph_format.keep_with_next=True
-            par=D.add_paragraph('Ожидается: '+event['expected']+'.');pf(par,size=12,line=1.15)
-            par.paragraph_format.keep_with_next=True
+            for label,description in zip(['Входные данные','Действие','Ожидаемый вывод'],INPUTS[event['id']]):
+                par=D.add_paragraph(label+': '+description);pf(par,size=12,line=1.15)
+                par.paragraph_format.keep_with_next=True
             actual=event['actual'].replace(str(BASE),'[каталог проекта]')
             par=D.add_paragraph('Получено: '+actual);pf(par,size=12,line=1.15)
             par.paragraph_format.keep_with_next=has
@@ -245,6 +274,13 @@ def data(name):
                 pf(par,size=12,line=1.15);par.paragraph_format.keep_with_next=True
                 picture(shot,event['id']+' '+event['name'])
             else:p('Проверка обработчика и состояния виджетов завершилась успешно.')
+
+
+def inline_code(text):
+    for line in text.splitlines():
+        par=D.add_paragraph()
+        pf(par,size=11,align=WD_ALIGN_PARAGRAPH.LEFT,indent=0,line=1)
+        font(par.add_run(line),name='Consolas',size=11)
 
 
 text=(BASE/'report_text.md').read_text(encoding='utf-8')
@@ -269,8 +305,39 @@ def landscape():
     return s
 
 
+def definitions(node,prefix=''):
+    for child in ast.iter_child_nodes(node):
+        if isinstance(child,(ast.ClassDef,ast.FunctionDef,ast.AsyncFunctionDef)):
+            name=prefix+child.name
+            if isinstance(child,(ast.FunctionDef,ast.AsyncFunctionDef)):
+                yield name,child
+            yield from definitions(child,name+'.')
+        else:
+            yield from definitions(child,prefix)
+
+
+def function_notes(path,title):
+    heading(title,3)
+    module=path.relative_to(BASE).as_posix()
+    notes=NOTES[module]
+    for name,node in definitions(ast.parse(path.read_text(encoding='utf-8'))):
+        if name not in notes:raise ValueError('Нет пояснения '+module+':'+name)
+        signature=name+'('+ast.unparse(node.args)+')'
+        par=D.add_paragraph(signature+f'; строки {node.lineno}-{node.end_lineno}')
+        pf(par,size=12,align=WD_ALIGN_PARAGRAPH.LEFT,indent=0,line=1.15)
+        par.paragraph_format.keep_with_next=True
+        par.paragraph_format.space_before=Pt(6)
+        for r in par.runs:font(r,size=12,bold=True)
+        for label,value in zip(['Семантика','Вход','Результат'],notes[name]):
+            par=D.add_paragraph(label+': '+value)
+            pf(par,size=12,indent=0,line=1.15)
+            par.paragraph_format.keep_with_next=label!='Результат'
+
+
 def listing(path,title):
     heading(title,2)
+    function_notes(path,'Назначение и семантика функций')
+    heading('Исходный код',3)
     par=D.add_paragraph(str(path.relative_to(BASE)));pf(par,size=12,indent=0,line=1)
     par.paragraph_format.keep_with_next=True
     for i,line in enumerate(path.read_text(encoding='utf-8').splitlines(),1):
@@ -317,8 +384,23 @@ table('Состав электронного комплекта',['Путь','Н
  ['screenshots','Снимки окон зарегистрированных сценариев']],number='Г.1')
 p('Команда запуска: python app.py. Команда тестирования: python -m unittest discover -s tests -v. Полный эксперимент: python experiments.py. Каталог интерфейсных сценариев без ручного ввода: python qa_visual.py --batch. Для показа сценариев по одному: python qa_visual.py; клавиши F9 и F8 переключают вперёд и назад.')
 
+heading('Г.1 Сборка и проверка документа',2)
+p('build_report.py читает report_text.md, данные испытаний, справочник функций и официальный бланк. Для сборки нужен python-docx. После создания DOCX сценарий render_word.ps1 принимает InputDocx и OutputPdf, открывает документ в Microsoft Word, обновляет содержание и номера страниц, сохраняет DOCX и экспортирует PDF. В консоль выводится число страниц. Снимки страниц используются только для проверки оформления.')
+function_notes(BASE/'build_report.py','Функции сборки отчета')
+
+
+def sanitize_document():
+    for part in D.part.package.parts:
+        element=getattr(part,'_element',None)
+        if element is not None:
+            for node in element.iter():
+                if node.tag in {qn('w:t'),qn('m:t'),qn('a:t'),qn('w:instrText')} and node.text:
+                    node.text=node.text.replace('\u2014','-').replace('\u2013','-').replace('\u2012','-').replace('\u2015','-')
+
+
 settings=D.settings.element
 update=OxmlElement('w:updateFields');update.set(qn('w:val'),'true');settings.append(update)
+sanitize_document()
 out=BASE/'Реферат_Синтез_и_минимизация_КА.docx'
 D.save(out)
 print(out.name)
